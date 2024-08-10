@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- this is an example from the MDN Layout Cookbook -->
+    <title>TCB Slide Generator</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        html {
+            height:100%;
+            box-sizing: border-box;
+        }
+        body {
+            height:100%;
+            background-color: #fff;
+            color: #333;
+            font: 1.2em / 1.5 Helvetica Neue, Helvetica, Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        * {
+            box-sizing: inherit;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            /* border: 1px solid #dddddd; */
+            text-align: left;
+            padding: 8px;
+        }
+        td > input[type='text']
+        {
+            width: 100%; /*this will set the width of the textbox equal to its container td*/
+        }
+        td > textarea
+        {
+            width: 100%; /*this will set the width of the textbox equal to its container td*/
+        }
+        tr:nth-child(1) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><center>TCB Program Generator</center></h1>
+    <table>
+        <tr>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td><label for="date">Worship Date:</label></td>
+            <td><input type="text" id="date" name="date"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><label for="title">Title:</label></td>
+            <td><input type="text" id="title" name="title"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><label for="subTitle">Sub Title:</label></td>
+            <td><input type="text" id="subTitle" name="subTitle"></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="backGround">Background:</label></td>
+            <td><input type="text" id="backGround" name="backGround"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td width="60%">
+                <button type="button" onclick="loadProgram()">Load From Server</button>
+                <button type="button" onclick="refreshSections()">Refresh</button>
+                <button type="button" onclick="initData()">Add</button>
+                <button type="button" onclick="clearData()">Clear</button>
+                <button type="button" onclick="saveProgram()">Save Program</button>
+                <button type="button" onclick="copyProgram()">Copy Program</button>
+            </td>
+            <td width="30%">
+            </td>
+        </tr>
+    </table>
+    <br />
+    <h3>Sections:</h3>
+    <p>* <i>Songs section should be named as 'Songs'.</i> </p>
+    <table id="sections">
+        <tr id="tblHeader">
+            <th>Sno</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Sub Title</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="text" id="sectionName" name="sectionName">
+            </td>
+            <td>
+                <input type="text" id="sectionTitle" name="sectionTitle">
+            </td>
+            <td>
+                <input type="text" id="sectonSubTitle" name="sectonSubTitle">
+            </td>
+            <td>
+                <button type="button" onclick="addSection();">Add</button>
+            </td>
+        </tr>
+      </table>
+      <hr />
+      <br />
+      <h3>Songs:  <button type="button" onclick="toggleSongs();">Show/Hide</button> </h3>
+      <div id="songsTable" style="display:none">
+        <table id="songs">
+            <tr id="tblSongsHeader">
+                <th>Sno</th>
+                <th>Initial</th>
+                <th>Chorus Lines</th>
+                <th>Verses</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="text" id="songUrl" name="songUrl">
+                    <textarea id="songScript" name="songLyrics" readonly rows="15" cols="30">
+                    </textarea>
+                </td>
+                <td>
+                    <textarea id="songLyrics" name="songLyrics" rows="20" cols="50">
+                    </textarea>
+                </td>
+                <td>
+                    <button type="button" onclick="copyCode();">Copy Code</button>
+                    <button type="button" onclick="getLyrics();">Get Lyrics</button>
+                    <br />
+                    <p>*<i>{no. of chorus-lines}-{no. of lines to skip from 1st para}</i></p>
+                    <br />
+                    <input type="text" id="chorusLines" name="songUrl" cols="2">
+                    <button type="button" onclick="addLyrics();">Add Lyrics</button>
+                    <button type="button" onclick="clearLyrics();">Clear</button>
+                </td>
+            </tr>
+            </table>
+        </div>
+      <hr />
+      <pre id="slidesData" style="color:green; font-size: 20px; font-weight: bold;">
+      </pre>
+
+      <iframe id="songFrame" name="songFrame" style="position: absolute;width:0;height:0;border:0;"></iframe>
+
+    </body>
+
+<script>
+
+var iframe = document.getElementById('songFrame');
+iframe.onload = function() {
+    const songLyrics = document.getElementById('songLyrics');
+    const songFrame = document.getElementById('songFrame');
+
+    const text = songFrame.contentWindow.document.getElementsByClassName('ui-tabs-panel ui-corner-bottom ui-widget-content')[0].innerText;
+    alert(text);
+};
+//style="position: absolute;width:0;height:0;border:0;"
+
+const data = {
+        date: "",
+        title: "",
+        subtitle: "",
+        background: "",
+        sections: []
+    };
+
+    const sectionData = {
+      name: "",
+      title: "",
+      subtitle: "",
+      content: [
+    ]
+    };
+
+    const sectionContent =
+        {
+          heading: "",
+          initial: "",
+          choruslines: 0,
+          slides: [
+            {
+              lines: [
+              ]
+            }
+            ]
+        };
+
+    function onDocLoad() {
+        const songLyrics = document.getElementById('songLyrics');
+        const songFrame = document.getElementById('songFrame');
+
+        const text = songFrame.contentWindow.document.getElementsByClassName('ui-tabs-panel ui-corner-bottom ui-widget-content')[0].innerText;
+        alert(text);
+    }
+
+  function getContent() {
+    alert('asdf');
+    fetch('https://christianlyricz.com/2017/02/06/gatha-kaalamantha/')
+      .then(response => response.text())
+      .then(html => {
+        console.log(html); // the HTML content of the URL as a string
+      })
+      .catch(error => console.error(error));
+      alert('1234');
+  }
+
+  async function getLyrics2() {
+    const songUrl = document.getElementById('songUrl').value;
+    const songLyrics = document.getElementById('songLyrics');
+
+      try {
+        const response = await fetch(`https://mobile.anilsweb.world/scrape?url=${encodeURIComponent(songUrl)}&elementId='song'`, 
+                            { mode: 'no-cors' });
+        if (response.status === 200) {
+            let data = await response.text();
+            document.getElementById('songLyrics').value = data;
+        }
+        else {
+            document.getElementById('songLyrics').value = 'call failed..';
+        }
+      } catch (error) {
+        document.getElementById('songLyrics').value = 'Error: ' + error;
+      }
+  }
+
+  async function getLyrics() {
+    const songUrl = document.getElementById('songUrl').value;
+    const songLyrics = document.getElementById('songLyrics');      
+    const request = `https://mobile.anilsweb.world/scrape?url=${encodeURIComponent(songUrl)}&elementId=song`;
+    try {
+        fetch(request, { mode: 'cors' }).then(async (response) => {
+            console.log(response);
+            response.text().then(async (data) => {
+                document.getElementById('songLyrics').value = data;
+            });
+        });
+    } catch (error) {
+        document.getElementById('songLyrics').value = 'Error: ' + error;
+      }
+  }   
+    
+  function clearData() {
+    saveData({date: '', title: '', subtitle: '', background: '', sections: []});
+    refreshSections();
+  }
+
+  function initFieldsData() {
+    const date = document.getElementById('date').value;
+    const title = document.getElementById('title').value;
+    const subTitle = document.getElementById('subTitle').value;
+    const backGround = document.getElementById('backGround').value;
+
+    return {
+    date,
+    title,
+    subTitle,
+    backGround,
+    }
+  }
+    
+  function initData() {
+
+    const fieldsData = initFieldsData();
+
+    data.date = fieldsData.date;
+    data.title = fieldsData.title;
+    data.subtitle = fieldsData.subTitle;
+    data.background = fieldsData.backGround;
+    data.sections = [];
+
+    saveData(data);
+    refreshSections();
+  }
+
+  function refreshSections() {
+
+    const sData = getSavedData();
+    if (!sData) {
+
+        return;
+    }
+
+    document.getElementById('date').value = sData.date;
+    document.getElementById('title').value = sData.title;
+    document.getElementById('subTitle').value = sData.subtitle;
+    document.getElementById('backGround').value = sData.background;
+
+    const sections = document.getElementById('sections');
+    const len = sections.rows.length;
+    if (len > 2) {
+        for (let index = len-2; index > 0; index--) {
+            sections.deleteRow(index);
+        }
+    }
+
+    var i = (sections.rows.length > 0) ? sections.rows.length - 1 : 0;
+    var subSectionLen = 0;
+    sData.sections.forEach(section => {
+
+        var songsButton = '';
+        var row = sections.insertRow(i+subSectionLen);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+
+        cell1.innerHTML = i;
+        cell2.innerHTML = section.name;
+        cell3.innerHTML = section.title;
+        cell4.innerHTML = section.subtitle;
+
+        if (section.name.indexOf('Song') >= 0) {
+            //songsButton = `<button type="button" onclick="addSongs(${i}, '${section.name}');">AddSongs</button>`;
+        }
+
+        cell5.innerHTML = `<button type="button" onclick="removeSection(${i}, '${section.name}');">Remove</button> ${songsButton}`;
+
+        if (section.content) {
+            section.content.forEach(content => {
+                subSectionLen++;
+
+                const upButton = `<button type="button" onclick="moveSong(${subSectionLen-1}, '${content.heading}', 1);"><i class="fa fa-arrow-up"></i></button>`
+                const downButton = `<button type="button" onclick="moveSong(${subSectionLen-1}, '${content.heading}', -1);"><i class="fa fa-arrow-down"></i></button>`
+                const removeButton = `<button type="button" onclick="removeSong(${subSectionLen-1}, '${content.heading}');"><i class="fa fa-remove"></i></button>`
+
+                let buttonList = '';
+
+                if (subSectionLen==1) {
+                    buttonList = `${removeButton} ${downButton}`;
+                }
+                else if(subSectionLen === section.content.length) {
+                    buttonList = `${removeButton} ${upButton}`;
+                }
+                else {
+                    buttonList = `${removeButton} ${downButton} ${upButton}`;
+                }
+
+                var row = sections.insertRow(i+subSectionLen);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+
+                cell1.innerHTML = '';
+                cell2.innerHTML = subSectionLen;
+                cell3.innerHTML = content.heading;
+                cell4.innerHTML = `${content.initial} (${content.choruslines})`;
+                cell5.innerHTML = buttonList;
+            });
+        }
+        i++;
+    });
+
+    var slidesData = document.getElementById("slidesData");
+    slidesData.innerHTML = JSON.stringify(sData, undefined, 4);
+
+    const songScript = document.getElementById('songScript');
+    songScript.value = `    var text = document.getElementsByClassName('ui-tabs-panel ui-corner-bottom ui-widget-content')[0].innerText;
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    alert('done');`;
+
+    clearLyrics();
+  }
+
+  function copyCode() {
+
+    const scriptCode = document.getElementById('songScript').value;
+
+    var textArea = document.createElement("textarea");
+    textArea.value = scriptCode;
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+  }
+
+  function getSections() {
+    const sections = [];
+    return sections;
+  }
+
+  function updateSections() {
+
+  }
+
+  function toggleSongs() {
+    const songsTable = document.getElementById('songsTable');
+    if (songsTable.style.display === 'block') {
+        songsTable.style.display = 'none'
+    }
+    else {
+        songsTable.style.display = 'block'
+    }
+  }
+
+  function addSection() {
+    const name = document.getElementById('sectionName').value;
+    const title = document.getElementById('sectionTitle').value;
+    const subTitle = document.getElementById('sectonSubTitle').value;
+
+    const section = JSON.parse(JSON.stringify(sectionData));
+
+    section.name = name;
+    section.title = title;
+    section.subtitle = subTitle;
+    section.content = undefined;
+
+    const sData = getSavedData();
+    sData.sections.push(section);
+
+    saveData(sData);
+    refreshSections();
+    document.getElementById('sectionName').value = '';
+    document.getElementById('sectionTitle').value = '';
+    document.getElementById('sectonSubTitle').value = '';
+  }
+
+  function removeSection(indx, name) {
+
+    // const sections = document.getElementById('sections');
+    // sections.deleteRow(index);
+
+    const sData = getSavedData();
+    sData.sections = sData.sections.filter((item) => item.name !== name);
+
+    saveData(sData);
+    refreshSections();
+  }
+
+  function removeSong(indx, name) {
+
+    // const sections = document.getElementById('sections');
+    // sections.deleteRow(index);
+
+    const sData = getSavedData();
+    let songsSection = sData.sections.find(sec => sec.name.indexOf('Song') >= 0);
+    songsSection.content = songsSection.content.filter((item) => item.heading !== name);
+
+    saveData(sData);
+    refreshSections();
+}
+
+function moveSong(indx, name, delta) {
+
+    const sData = getSavedData();
+    let songsSection = sData.sections.find(sec => sec.name.indexOf('Song') >= 0);
+    var song = songsSection.content.splice(indx, 1)[0];
+    songsSection.content.splice(indx-delta, 0, song);
+
+    saveData(sData);
+    refreshSections();
+}
+
+
+function getContent() {
+    const content = [];
+    return content;
+  }
+
+  function addSongs(indx, name) {
+
+  }
+
+  function addLyrics() {
+
+  var lines = [];
+  var verses = [];
+  var heading = '';
+  var song = {
+      heading: '',
+      initial: '',
+      choruslines: 0,
+      slides: []
+  };
+  var linesObj = {
+      lines: []
+  };
+  var lst = document.getElementById('songLyrics').value.split('\n\n');
+  for(var i=0; i<lst.length; i++) {
+      var line = '"' + lst[i] + '"';
+      lines.push(line.replace(/\n/g,'\\n'));
+      const lines2 = lst[i].split('\n');
+      const lns = { lines: [] };
+      for(var j=0; j<lines2.length;j++) {
+          const ln = lines2[j].trim();
+          if(ln != ''){
+              if (ln.indexOf('||') > -1) {
+                  const lns2 = ln.split('||');
+                  lns.lines.push(lns2[0].trim());
+                  if (song.initial === '') {
+                    //song.initial = ln.substring(ln.indexOf('||'), ln.lastIndexOf('||'));
+                      song.initial = lns2[1] ?? '';
+                  }
+              }
+              else {
+                  lns.lines.push(ln);
+              }
+          }
+      }
+      if(i===0) {
+          song.heading = lns.lines[0];
+      }
+      song.slides.push(lns);
+  }
+
+  const chorusLines = document.getElementById('chorusLines').value.trim();
+  if (chorusLines != '') {
+    song.choruslines = chorusLines;
+  }
+
+  const sData = getSavedData();
+  let songsSection = sData.sections.find(sec => sec.name.indexOf('Song') >= 0);
+    if (songsSection && songsSection.content) {
+        songsSection.content.push(song);
+    }
+    else if(songsSection && !songsSection.content) {
+        songsSection.content = [];
+        songsSection.content.push(song);
+    }
+
+    saveData(sData);
+    refreshSections();
+}
+
+  function clearLyrics() {
+    document.getElementById('songLyrics').value = '';
+    document.getElementById('chorusLines').value = '';
+  }
+
+  function copyProgram() {
+    const sData = getSavedData();
+    var slidesData = document.getElementById("slidesData").innerHTML;
+    if (slidesData === '') {
+        alert('No Data');
+    }
+    else {
+        var textArea = document.createElement("textarea");
+        textArea.value = slidesData;
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Copied Program');
+    }
+  }
+
+  function saveProgram() {
+    const sData = getSavedData();
+    const fieldsData = initFieldsData();
+    sData.date = fieldsData.date;
+    sData.title = fieldsData.title;
+    sData.subtitle = fieldsData.subTitle;
+    sData.background = fieldsData.backGround;
+    saveData(sData);
+  }
+    
+  function saveData(obj) {
+    localStorage.setItem("slidesData", JSON.stringify(obj));
+  }
+
+  function getSavedData() {
+    const sData =  localStorage.getItem("slidesData");
+    if (sData) {
+        return JSON.parse(sData);
+    }
+
+    return undefined;
+  }
+
+  function loadProgram() {
+    const sData = getProgram();
+    if (sData) {
+        saveData(sData);
+        refreshSections();
+    }
+  }
+
+  function httpGet(theUrl) {
+        let xmlHttpReq = new XMLHttpRequest();
+        xmlHttpReq.open("GET", theUrl, false);
+        xmlHttpReq.send(null);
+        return xmlHttpReq.responseText;
+    }
+
+    function getProgram() {
+        var data = httpGet('https://stltcb.github.io/data/slides.json');
+        return JSON.parse(data);
+    }
+
+</script>
+</html>

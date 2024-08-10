@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>TCB Song-Slide Generator</title>
+</head>
+<body>
+  <h1>TCB song-slide generator</h1>
+  <form>
+    <label for="url">Song URL:</label>
+    <input type="text" id="url" placeholder="Enter URL" required><br><br>
+    
+    <button type="button" onclick="extractInnerHTML()">Extract Lyrics</button>
+  </form> <br><br>
+  <form>
+    <label for="elementId">Song Name:</label>
+    <input type="text" id="elementId" placeholder="Enter Song Name" required><br><br>
+
+    <label for="lyrics">Song Lyrics:</label>
+    <textarea id="lyrics" name="lyrics" rows="20" cols="50"></textarea><br><br>
+    
+    <button type="button" onclick="gelerateSlide()">Generate Slide</button>
+  </form>
+
+  <script>
+    async function extractInnerHTML() {
+      const url = document.getElementById('url').value;
+      const elementId = document.getElementById('elementId').value;
+
+      try {
+        const response = await fetch(`https://mobile.anilsweb.world/scrape?url=${encodeURIComponent(url)}&elementId='song'`);
+        const data = await response.text();
+
+        document.getElementById('lyrics').innerText = data;
+      } catch (error) {
+        document.getElementById('lyrics').innerText = 'Error: ' + error;
+      }
+    }
+    async function gelerateSlide() {
+      const url = document.getElementById('url').value;
+      const elementId = document.getElementById('elementId').value;
+
+      try {
+        const response = await fetch(`/scrape?url=${encodeURIComponent(url)}&elementId='song'`);
+        const data = await response.text();
+
+        document.getElementById('result').innerText = data;
+      } catch (error) {
+        document.getElementById('result').innerText = 'Error: ' + error;
+      }
+    }     
+  </script>
+</body>
+</html>

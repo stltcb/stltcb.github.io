@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sajeeva Vahini</title>
+<style>
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  background-color: rgb(150,150,150);
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <input type="checkbox" value="99"> Telugu </input>
+    <input type="checkbox" value="14"> Transliterate </input>
+    <input type="checkbox" value="63"> Commentary </input>
+    <input type="checkbox" value="33" checked="true"> English </input>
+</div>  
+
+    <center><div id="dvBooks"></div></center>
+    <div id="dvModal" class="modal">
+        <div id="dvChapters" class="modal-content"></div>
+    </div>
+</body>
+
+<script>
+
+    $('input[type="checkbox"]').on('change', function() {
+        $(this).siblings('input[type="checkbox"]').prop('checked', false);
+    });
+
+    function GetFormatt() {
+        return $('input[type="checkbox"]')[0].val();
+    }
+
+    function OpenPage(bookIndx, chapter) {
+        //bc.postMessage(`navigate_to:${bookIndx}:${chapter}`);
+
+        localStorage.setItem('book_no', `${bookIndx}`);
+        localStorage.setItem('chap_no', `${chapter}`);
+
+        let dvModal = document.getElementById("dvModal");
+        dvModal.style.display = "none";
+
+        var p = $('input[type="checkbox"]:checked').val();
+
+        //p=99/14/60/33 telugu/translit/desc/eng
+        let url = `https://www.sajeevavahini.com/telugubible/index.aspx?b=${bookIndx}&c=${chapter}&p=${p}`;
+        window.open(url);
+    }
+
+    function GenerateChapters(bookIndx, chapterCount, noOfCols, name) {
+        //Create a HTML Table element.
+        const table2 = document.createElement("TABLE");
+        table2.border = "1";
+
+        if (chapterCount > 100) {
+            noOfCols = 15;
+        }
+
+        let count = 0;
+        let colCount = 0;
+        let columnCount = noOfCols;
+        for (let i = 1; i <= chapterCount; i++) {
+            count++;
+            if (colCount === 0) {
+                var row2 = table2.insertRow(-1);
+            }
+            let cell2 = row2.insertCell(-1);
+            cell2.innerHTML = `<button type="button" style="width:100%" onclick="OpenPage('${bookIndx}', '${i}')"><h2>${i}</h2></button>`
+
+            colCount++;
+            if (colCount >= noOfCols) {
+                colCount = 0;
+            }
+        }
+
+        let dvModal = document.getElementById("dvModal");
+        let dvChapters = document.getElementById("dvChapters");
+        dvChapters.innerHTML = `<h2> ${name} </h2>`;
+        dvChapters.appendChild(table2);
+        dvModal.style.display = "block";
+
+        let pos = $("#btnBook" + bookIndx).position();
+
+        let rect = document.getElementById(`btnBook${bookIndx}`).getBoundingClientRect();
+        let x = rect.x;
+        let y = rect.y;
+
+        let w = $("#dvChapters table").width();
+        let h = $("#dvChapters").height();
+        let t = (y - (h/2));
+        let l = (x - (w/2));
+
+        dvChapters.style.width = `${w}px`;
+        dvChapters.style.marginTop = `${t<0?0:t}px`;
+        dvChapters.style.marginLeft = `${l<0?0:l}px`;
+
+        console.log(`${$("#dvChapters").height()} X:${x} Y:${y} W:${w} H:${h} Top:${dvChapters.style.marginTop} Left:${dvChapters.style.marginLeft} Width:${dvChapters.style.width}`);
+
+    }
+
+    function GenerateBooksTable(books, noOfCols, startIndx) {
+
+        let table = document.createElement("TABLE");
+        table.border = "1";
+
+        let count = 0;
+        let colCount = 0;
+        let columnCount = noOfCols;
+        for (let key in Object.keys(books)) {
+            count++;
+            if (colCount === 0) {
+                var row = table.insertRow(-1);
+            }
+            let cell = row.insertCell(-1);
+            let name = Object.keys(books)[key];
+            let value = Object.values(books)[key];
+            if (value > 1) {
+              cell.innerHTML = `<button type="button" id="btnBook${startIndx + count}" style="width:100%" onclick="GenerateChapters(${startIndx + count}, ${value}, 10, '${name}')"><h4>${name.replace(' - ', '<br/>')}</h4></button>`;
+            }
+            else {
+              cell.innerHTML = `<button type="button" id="btnBook${startIndx + count}"  style="width:100%" onclick="OpenPage('${startIndx + count}', '${value}')"><h4>${name.replace(' - ', '<br/>')}</h4></button>`;
+            }
+            colCount++;
+            if (colCount >= noOfCols) {
+                colCount = 0;
+            }
+        }
+
+        return table;
+
+    }
+
+    function GenerateBooks() {
+        const oldTestment = {"Genesis - ఆదికాండము":50,"Exodus - నిర్గమకాండము":40,"Leviticus - లేవీయకాండము":27,"Numbers - సంఖ్యాకాండము":36,"Deuteronomy - ద్వితీయోపదేశకాండము":34,"Joshua - యెహోషువ":24,"Judges - న్యాయాధిపతులు":21,"Ruth - రూతు":4,
+		"1 Samuel - 1 సమూయేలు":31,"2 Samuel - 2 సమూయేలు":24,"1 Kings - 1 రాజులు":22,"2 Kings - 2 రాజులు":25,"1 Chronicles - 1 దినవృత్తాంతములు":29,"2 Chronicles - 2 దినవృత్తాంతములు":36,"Ezra - ఎజ్రా":10,"Nehemiah - నెహెమ్యా":13,"Esther - ఎస్తేరు":10,
+		"Job - యోబు":42,"Psalms - కీర్తనల":150,"Proverbs - సామెతలు":31,"Ecclesiastes - ప్రసంగి":12,"Song of Solomon - పరమగీతము":8,"Isaiah - యెషయా":66,"Jeremiah - యిర్మియా":52,"Lamentations - విలాపవాక్యములు":5,"Ezekiel - యెహెఙ్కేలు":48,
+		"Daniel - దానియేలు":12,"Hosea - హోషేయ":14,"Joel - యోవేలు":3,"Amos - ఆమోసు":9,"Obadiah - ఓబద్యా":1,"Jonah - యోనా":4,"Micah - మీకా":7,"Nahum - నహూము":3,"Habakkuk - హబక్కూకు":3,"Zephaniah - జెఫన్యా":3,"Haggai - హగ్గయి":2,"Zechariah - జెకర్యా":14,
+		"Malachi - మలాకీ":4};
+        const newTestment = {"Matthew - మత్తయి":28,"Mark - మార్కు":16,"Luke - లూకా":24,"John - యోహాను":21,"Acts - అపొ. కార్యములు":28,"Romans - రోమీయులకు":16,"1 Corinthians - 1 కొరింథీయులకు":16,"2 Corinthians - 2 కొరింథీయులకు":13,
+		"Galatians - గలతీయులకు":6,"Ephesians - ఎఫెసీయులకు":6,"Philippians - ఫిలిప్పీయులకు":4,"Colossians - కొలస్సయులకు":4,"1 Thessalonians - 1 థెస్సలొనీకయులకు":5,"2 Thessalonians - 2 థెస్సలొనీకయులకు":3,"1 Timothy - 1 తిమోతికి":6,"2 Timothy - 2 తిమోతికి":4,
+		"Titus - తీతుకు":3,"Philemon - ఫిలేమోనుకు":1,"Hebrews - హెబ్రీయులకు":13,"James - యాకోబు":5,"1 Peter - 1 పేతురు":5,"2 Peter - 2 పేతురు":3,"1 John - 1 యోహాను":5,"2 John - 2 యోహాను ":1,"3 John - 3 యోహాను":1,"Jude - యూదా":1,"Revelation - ప్రకటన":22};
+
+        let otTable = GenerateBooksTable(oldTestment, 8, 0);
+        let ntTable = GenerateBooksTable(newTestment, 8, 39);
+
+        const dvChapters = document.getElementById("dvChapters");
+        const dvBooks = document.getElementById("dvBooks");
+        dvBooks.innerHTML = "<h2> Books </h2><br/>";
+        dvBooks.appendChild(otTable);
+        dvBooks.appendChild(ntTable);
+    }
+
+    GenerateBooks();
+
+    window.onclick = function(event) {
+        let dvModal = document.getElementById("dvModal");
+        if (event.target === dvModal) {
+                //let dvModal = document.getElementById("dvModal");
+                dvModal.style.display = "none";
+        }
+    }
+
+</script>
+</html>
