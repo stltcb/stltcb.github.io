@@ -1,5 +1,5 @@
 {
-    "date": "09/14/2024",
+    "date": "10/26/2024",
     "title": "Telugu Fellowship",
     "subtitle": "Family Prayer",
     "background": "",
@@ -7,7 +7,7 @@
         {
             "name": "Opening Prayer",
             "title": "Opening Prayer",
-            "subtitle": "Bro Mahesh"
+            "subtitle": "Bro Samuel"
         },
         {
             "name": "Songs",
@@ -15,226 +15,301 @@
             "subtitle": "Worship",
             "content": [
                 {
-                    "heading": "క్రీస్తు యేసు దయాళు ప్రభు - నీవే సృష్టికర్తవు",
-                    "initial": " క్రీస్తు ",
+                    "heading": "పరమ జీవము నాకు నివ్వ",
+                    "initial": "యేసు",
+                    "choruslines": 0,
+                    "slides": [
+                        {
+                            "lines": [
+                                "పరమ జీవము నాకు నివ్వ",
+                                "తిరిగి లేచెను నాతో నుండ",
+                                "నిరంతరము నన్ను నడిపించును",
+                                "మరల వచ్చి యేసు కొని పోవును"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "యేసు చాలును – యేసు చాలును",
+                                "యే సమయమైన యే స్థితికైన",
+                                "నా జీవితములో యేసు చాలును"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "సాతాను శోధనలధికమైన",
+                                "సొమ్మసిల్లక సాగి వెళ్ళెదను",
+                                "లోకము శరీరము లాగినను",
+                                "లోబడక నేను వెళ్ళెదను"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "యేసు చాలును – యేసు చాలును",
+                                "యే సమయమైన యే స్థితికైన",
+                                "నా జీవితములో యేసు చాలును"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "పచ్చిక బయలులో పరుండజేయున్",
+                                "శాంతి జలము చెంత నడిపించును",
+                                "అనిశము ప్రాణము తృప్తిపరచున్",
+                                "మరణ లోయలో నన్ను కాపాడును"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "యేసు చాలును – యేసు చాలును",
+                                "యే సమయమైన యే స్థితికైన",
+                                "నా జీవితములో యేసు చాలును"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "నరులెల్లరు నన్ను విడిచినను",
+                                "శరీరము కుళ్ళి కృశించినను",
+                                "హరించినన్ నా ఐశ్వర్యము",
+                                "విరోధివలె నన్ను విడచినను"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "యేసు చాలును – యేసు చాలును",
+                                "యే సమయమైన యే స్థితికైన",
+                                "నా జీవితములో యేసు చాలును"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "heading": "నీతో ఉంటే జీవితం వేదనైన రంగుల పయనం",
+                    "initial": "నీతో",
                     "choruslines": "2",
                     "slides": [
                         {
                             "lines": [
-                                "క్రీస్తు యేసు దయాళు ప్రభు - నీవే సృష్టికర్తవు",
-                                "నీవే మా రక్షకుడవని హల్లెలూయ పాడెదం"
+                                "నీతో ఉంటే జీవితం వేదనైన రంగుల పయనం",
+                                "నీతో ఉంటే జీవితం బాటేదైన పువ్వుల కుసుమం"
                             ]
                         },
                         {
                             "lines": [
-                                "పాప జగాన - జన్మించితివి - పేద గృహాన - పెరిగితివి",
-                                "సంకట కష్టములనుభవించి మమ్మును రక్షించితివి - ప్రియ యేసు",
-                                "మమ్మును రక్షించితివి - మమ్ము"
+                                "నువ్వే లేకపోతే నేను జీవించలేను",
+                                "నువ్వే లేకపోతే నేను బ్రతుకలేను",
+                                "నిన్ను విడచిన క్షణమే ఒక యుగమై గడిచే నా జీవితము",
+                                "చెదరిన నా బ్రతుకే నిను వెతికే నీ తోడు కోసం",
+                                "నువ్వే నా ప్రాణాధారము నువ్వే నా జీవాధారము"
                             ]
                         },
                         {
                             "lines": [
-                                "జీవిత నావా - తుఫాను చేత - తల్లడిల్లగ - ఒక్క మాటతో",
-                                "ఆజ్ఞాపించి తుఫాను నాపి - దరికి జేర్చితివి - ప్రియ యేసు",
-                                "దరికి జేర్చితివి - దరికి"
+                                "నీతో నేను జీవిస్తానే కలకాలము",
+                                "నిన్నే నేను ప్రేమిస్తానే చిరకాలము",
+                                "లోకంలో నేనెన్నో వెతికా అంతా శూన్యము",
+                                "చివరికి నువ్వే నిలిచావే సదాకాలము (2)",
+                                "నిను విడువను దేవా నా ప్రభువా నా ప్రాణనాథ",
+                                "నీ చేతితో మలచి నన్ను విరచి సరిచేయునాథ",
+                                "నువ్వే నా ప్రాణాధారము నువ్వే నా జీవాధారము"
                             ]
                         },
                         {
                             "lines": [
-                                "ఎన్నో విధాల - పోనట్టి నాదు - పాప రోగము - నీ వస్త్రమును",
-                                "ముట్టినంతనే - అద్భుతముగ - నివారణాయెను",
-                                "ప్రియ యేసు నివారణాయెను - నివార"
+                                "నువ్వే లేకపోతే నేను జీవించలేను",
+                                "నువ్వే లేకపోతే నేను బ్రతుకలేను",
+                                "నిన్ను విడచిన క్షణమే ఒక యుగమై గడిచే నా జీవితము",
+                                "చెదరిన నా బ్రతుకే నిను వెతికే నీ తోడు కోసం",
+                                "నువ్వే నా ప్రాణాధారము నువ్వే నా జీవాధారము"
                             ]
                         }
                     ]
                 },
                 {
-                    "heading": "యెహోవా నా కాపరి నాకు లేమిలేదు",
-                    "initial": " యెహోవా ",
+                    "heading": "నమ్మకమైన దేవుడవైన నీవే చాలు యేసయ్యా (2)",
+                    "initial": "నమ్మకమైన",
+                    "choruslines": "3",
+                    "slides": [
+                        {
+                            "lines": [
+                                "నమ్మకమైన దేవుడవైన నీవే చాలు యేసయ్యా (2)",
+                                "నేనేమైయున్నా ఏ స్థితిలో ఉన్నా (2)",
+                                "ఇంకేమి కోరుకోనయ్యా (2)",
+                                "ఆప్తులైన వారే హాని చేయచూసినా",
+                                "మిత్రులే నిలువకుండినా (2)",
+                                "న్యాయము తీర్చే నీవు నాకుంటే (2)",
+                                "చాలు యేసయ్యా (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "జ్ఞానమంత చూపి శక్తి ధారపోసినా",
+                                "నష్టమే మిగులుచుండినా (2)",
+                                "శాపము బాపే నీవు నాకుంటే (2)",
+                                "చాలు యేసయ్యా (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "కష్ట కాలమందు గుండె జారిపోయినా",
+                                "గమ్యమే తెలియకుండినా (2)",
+                                "సాయము చేసే నీవు నాకుంటే (2)",
+                                "చాలు యేసయ్యా (2)"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "heading": "బెత్లెహేములో సందడి",
+                    "initial": "బెత్లెహేములో",
+                    "choruslines": "4",
+                    "slides": [
+                        {
+                            "lines": [
+                                "బెత్లెహేములో సందడి",
+                                "పశుల పాకలో సందడి",
+                                "శ్రీ యేసు పుట్టాడని",
+                                "మహారాజు పుట్టాడని (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "ఆకాశములో సందడి",
+                                "చుక్కలలో సందడి (2)",
+                                "వెలుగులతో సందడి",
+                                "మిల మిల మెరిసే సందడి (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "దూతల పాటలతో సందడి",
+                                "సమాధాన వార్తతో సందడి (2)",
+                                "గొల్లల పరుగులతో సందడి",
+                                "క్రిస్మస్ పాటలతో సందడి (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "దావీదు పురములో సందడి",
+                                "రక్షకుని వార్తతో సందడి (2)",
+                                "జ్ఞానుల రాకతో సందడి",
+                                "లోకమంతా సందడి (2)"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "heading": "దేవునియందు నిరీక్షణ నుంచి",
+                    "initial": "దేవుని",
                     "choruslines": "2",
                     "slides": [
                         {
                             "lines": [
-                                "యెహోవా నా కాపరి నాకు లేమిలేదు",
-                                "పచ్చికగలచోట్ల మచ్చికతో నడుపున్"
+                                "దేవునియందు నిరీక్షణ నుంచి",
+                                "ఆయనను స్తుతించు నా ప్రాణమా (2)"
                             ]
                         },
                         {
                             "lines": [
-                                "మరణపు చీకటిలో తిరుగుచుండినను",
-                                "ప్రభు యేసు నన్ను కరుణతో ఆదరించున్"
+                                "ఏ అపాయము రాకుండ నిన్ను – దివారాత్రులు కాపాడువాడు (2)",
+                                "ప్రతిక్షణం – నీ పక్షముండు – రక్షకుడు (2)"
                             ]
                         },
                         {
                             "lines": [
-                                "పగవారి ఎదుట ప్రేమతో ఒక విందు",
-                                "ప్రభు సిద్ధము చేయున్ పరవశమెందెదను"
+                                "నీకు సహాయము చేయువాడు – సదా ఆదుకొను వాడు ఆయనే (2)",
+                                "ఆధారము – ఆదరణ – ఆయనలో (2)"
                             ]
                         },
                         {
                             "lines": [
-                                "నూనెతో నా తలను అభిషేకము చేయున్",
-                                "నా హృదయము నిండి పొర్లుచున్నది"
+                                "తల్లి తన బిడ్డను మరచిననూ – మరువడు నీ దేవుడు నిన్ను (2)",
+                                "తల్లికన్నా – తండ్రికన్నా – ఉత్తముడు (2)"
                             ]
                         },
                         {
                             "lines": [
-                                "చిరకాలము నేను ప్రభు మందిరములో",
-                                "వసియించెద నిరతం సంతసమొందెదను"
+                                "నీకు విరోధముగా రూపించిన – ఏ విధ ఆయుధమును వర్ధిల్లదు (2)",
+                                "శత్రువులు – మిత్రులుగా – మారుదురు (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "స్తుతి మహిమలు నీకే ప్రభు – నిత్యము నిన్నే కొనియాడెద (2)",
+                                "హల్లెలూయ – హల్లెలూయ – హల్లెలూయ (2)"
                             ]
                         }
                     ]
                 },
                 {
-                    "heading": "ఎంత మంచి దేవుడవయ్యా",
-                    "initial": "ఎంత",
-                    "choruslines": "2",
-                    "slides": [
-                        {
-                            "lines": [
-                                "ఎంత మంచి దేవుడవయ్యా",
-                                "ఎంత మంచి దేవుడవేసయ్యా",
-                                "చింతలన్ని తీరేనయ్యా నిను చేరగా",
-                                "ఎంత మంచి దేవుడవేసయ్యా (2)"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "ఘోరపాపినైన నేనూ – దూరంగా పారిపోగా (2)",
-                                "నీ ప్రేమతో నను క్షమియించి",
-                                "నను హత్తుకొన్నావయ్యా (2)"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "నాకున్న వారందరూ – నను విడచిపోయిననూ (2)",
-                                "ఎన్నెన్నో ఇబ్బందులకు గురి చేసిననూ",
-                                "నను నీవు విడువలేదయ్యా (2)"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "నీవు లేకుండ నేనూ – ఈ లోకంలో బ్రతుకలేనయ్యా (2)",
-                                "నీతో కూడా ఈ లోకం నుండీ",
-                                "పరలోకం చేరెదనేసయ్యా (2)"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "heading": "ఒక క్షణమైనా నిన్ను వీడి",
-                    "initial": "ఒక క్షణమైనా",
-                    "choruslines": "2",
-                    "slides": [
-                        {
-                            "lines": [
-                                "ఒక క్షణమైనా నిన్ను వీడి",
-                                "ఉండలేనయ్య నా యేసయ్యా (2)",
-                                "యేసయ్యా యేసయ్యా",
-                                "యేసయ్యా యేసయ్యా (2)"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "నశియించిపోతున్న నన్ను",
-                                "బ్రతికించినావయ్యా యేసు",
-                                "కృశించిపోతున్న నాలో",
-                                "వేంచేసినావయ్యా యేసు (2)",
-                                "నీ కార్యములెంతో ఆశ్చర్యకరములయ్యా",
-                                "నీ వాగ్దానములెంతో నమ్మదగినవయ్యా"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "మతిలేక తిరిగిన నన్ను",
-                                "నీ దరి చేర్చినావయ్యా యేసు",
-                                "శ్రమ చేత నలిగిన నాకు",
-                                "వరమిచ్చినావయ్యా యేసు (2)",
-                                "నీ ఆలోచనలెంతో లోతైన దీవెనయ్యా",
-                                "నీ తలపులు ఎంతో మధురము నా యేసయ్యా"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "heading": "All to Jesus, I surrender",
-                    "initial": "",
-                    "choruslines": "0",
-                    "slides": [
-                        {
-                            "lines": [
-                                "All to Jesus, I surrender",
-                                "All to Thee I freely give",
-                                "I will ever love and trust You",
-                                "In Your presence daily live"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "I surrender all, I surrender all",
-                                "All to Thee, my blessed Savior",
-                                "I surrender all"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "All to Jesus, I surrender",
-                                "Lord, I give myself to Thee",
-                                "Fill me with Your love and power",
-                                "Let Your blessing fall on me"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "I surrender all, I surrender all",
-                                "All to Thee, my blessed Savior",
-                                "I surrender all"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "All to Jesus I surrender",
-                                "Now I feel the sacred flame",
-                                "O the joy of full salvation",
-                                "Glory, glory, to Your name"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "I surrender all, I surrender all",
-                                "All to Thee, my blessed Savior",
-                                "I surrender all"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "heading": "Seek ye first the kingdom of God",
+                    "heading": "Have you been to Jesus for the cleansing power?",
                     "initial": "",
                     "choruslines": 0,
                     "slides": [
                         {
                             "lines": [
-                                "Seek ye first the kingdom of God",
-                                "And His righteousness;",
-                                "And all these things shall be added unto you.",
-                                "Hallelu, Hallelujah!"
+                                "Have you been to Jesus for the cleansing power?",
+                                "Are you washed in the blood of the Lamb?",
+                                "Are you fully trusting in His grace this hour?",
+                                "Are you washed in the blood of the Lamb?"
                             ]
                         },
                         {
                             "lines": [
-                                "Ask, and it shall be given unto you;",
-                                "Seek, and you shall find.",
-                                "Knock, and it shall be opened unto you.",
-                                "Hallelu, Hallelujah!"
+                                "Are you washed in the blood,",
+                                "In the soul cleansing blood of the Lamb?",
+                                "Are your garments spotless?",
+                                "Are they white as snow?",
+                                "Are you washed in the blood of the Lamb?"
                             ]
                         },
                         {
                             "lines": [
-                                "Man shall not live by bread alone,",
-                                "But by every word",
-                                "That proceeds out from the mouth of God.",
-                                "Hallelu, Hallelujah!"
+                                "Are you walking daily by the Savior's side?",
+                                "Are you washed in the blood of the Lamb?",
+                                "Do you rest each moment in the Crucified?",
+                                "Are you washed in the blood of the Lamb?"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "When the Bridegroom cometh will your robes be white?",
+                                "Are you washed in the blood of the Lamb?",
+                                "Will your soul be ready for the mansions bright,",
+                                "And be washed in the blood of the Lamb?"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "Are you washed in the blood,",
+                                "In the soul cleansing blood of the Lamb?",
+                                "Are your garments spotless?",
+                                "Are they white as snow?",
+                                "Are you washed in the blood of the Lamb?"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "Lay aside the garments that are stained with sin,",
+                                "And be washed in the blood of the Lamb;",
+                                "There's a fountain flowing for the soul unclean,",
+                                "O be washed in the blood of the Lamb!"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "Are you washed in the blood,",
+                                "In the soul cleansing blood of the Lamb?",
+                                "Are your garments spotless?",
+                                "Are they white as snow?",
+                                "Are you washed in the blood of the Lamb?"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "Are you washed in the blood,",
+                                "In the soul cleansing blood of the Lamb?",
+                                "Are your garments spotless?",
+                                "Are they white as snow?",
+                                "Are you washed in the blood of the Lamb?"
                             ]
                         }
                     ]
@@ -244,7 +319,7 @@
         {
             "name": "Sermon",
             "title": "Message",
-            "subtitle": "Bro. Kiran"
+            "subtitle": "Bro. Srinivas"
         },
         {
             "name": "Announcements",
@@ -254,7 +329,7 @@
         {
             "name": "Closing Prayer",
             "title": "Closing Prayer",
-            "subtitle": "Bro. Anil"
+            "subtitle": "Bro. Mahesh"
         }
     ]
 }
