@@ -1,0 +1,245 @@
+{
+    "date": "12/21/2024",
+    "title": "Telugu Fellowship",
+    "subtitle": "Christmas Carols",
+    "background": "christmas.jpg",
+    "sections": [
+        {
+            "name": "Opening Prayer",
+            "title": "Opening Prayer",
+            "subtitle": "Bro Raj"
+        },
+        {
+            "name": "Songs",
+            "title": "Songs",
+            "subtitle": "Worship",
+            "content": [
+                {
+                    "heading": "ఎంత మంచి దేవుడవయ్యా",
+                    "initial": "ఎంత",
+                    "choruslines": "4",
+                    "slides": [
+                        {
+                            "lines": [
+                                "ఎంత మంచి దేవుడవయ్యా",
+                                "ఎంత మంచి దేవుడవేసయ్యా",
+                                "చింతలన్ని తీరేనయ్యా నిను చేరగా",
+                                "ఎంత మంచి దేవుడవేసయ్యా (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "ఘోరపాపినైన నేనూ – దూరంగా పారిపోగా (2)",
+                                "నీ ప్రేమతో నను క్షమియించి",
+                                "నను హత్తుకొన్నావయ్యా (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "నాకున్న వారందరూ – నను విడచిపోయిననూ (2)",
+                                "ఎన్నెన్నో ఇబ్బందులకు గురి చేసిననూ",
+                                "నను నీవు విడువలేదయ్యా (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "నీవు లేకుండ నేనూ – ఈ లోకంలో బ్రతుకలేనయ్యా (2)",
+                                "నీతో కూడా ఈ లోకం నుండీ",
+                                "పరలోకం చేరెదనేసయ్యా (2)"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "heading": "దేవునియందు నిరీక్షణ నుంచి",
+                    "initial": "దేవుని",
+                    "choruslines": "2",
+                    "slides": [
+                        {
+                            "lines": [
+                                "దేవునియందు నిరీక్షణ నుంచి",
+                                "ఆయనను స్తుతించు నా ప్రాణమా (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "ఏ అపాయము రాకుండ నిన్ను – దివారాత్రులు కాపాడువాడు (2)",
+                                "ప్రతిక్షణం – నీ పక్షముండు – రక్షకుడు (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "నీకు సహాయము చేయువాడు – సదా ఆదుకొను వాడు ఆయనే (2)",
+                                "ఆధారము – ఆదరణ – ఆయనలో (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "తల్లి తన బిడ్డను మరచిననూ – మరువడు నీ దేవుడు నిన్ను (2)",
+                                "తల్లికన్నా – తండ్రికన్నా – ఉత్తముడు (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "నీకు విరోధముగా రూపించిన – ఏ విధ ఆయుధమును వర్ధిల్లదు (2)",
+                                "శత్రువులు – మిత్రులుగా – మారుదురు (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "స్తుతి మహిమలు నీకే ప్రభు – నిత్యము నిన్నే కొనియాడెద (2)",
+                                "హల్లెలూయ – హల్లెలూయ – హల్లెలూయ (2)"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "heading": "లెక్కించలేని స్తోత్రముల్",
+                    "initial": "లెక్కించలేని",
+                    "choruslines": "4",
+                    "slides": [
+                        {
+                            "lines": [
+                                "లెక్కించలేని స్తోత్రముల్",
+                                "దేవా ఎల్లప్పుడూ నే పాడెదన్ (2)",
+                                "ఇంత వరకు నా బ్రతుకులో (2)",
+                                "నువ్వు చేసిన మేళ్ళకై"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "ఆకాశ మహాకాశముల్",
+                                "వాటియందున్న సర్వంబును (2)",
+                                "భూమిలో కనబడునవన్ని (2)",
+                                "ప్రభువా నిన్నే కీర్తించున్"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "అడవిలో నివసించువన్ని",
+                                "సుడిగాలియు మంచును (2)",
+                                "భూమిపైనున్నవన్ని (2)",
+                                "దేవా నిన్నే పొగడును"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "నీటిలో నివసించు ప్రాణుల్",
+                                "ఈ భువిలోన జీవ రాసులు (2)",
+                                "ఆకాశమున ఎగురునవన్ని (2)",
+                                "ప్రభువా నిన్నే కీర్తించున్"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "heading": "Bless the Lord, oh my soul",
+                    "initial": "",
+                    "choruslines": 0,
+                    "slides": [
+                        {
+                            "lines": [
+                                "Bless the Lord, oh my soul",
+                                "Oh my soul",
+                                "Worship His holy name",
+                                "Sing like never before",
+                                "Oh my soul",
+                                "I'll worship Your holy name"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "The sun comes up, it's a new day dawning",
+                                "It's time to sing Your song again",
+                                "Whatever may pass and whatever lies before me",
+                                "Let me be singing when the evening comes"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "Bless the Lord, oh my soul",
+                                "Oh my soul",
+                                "Worship His holy name",
+                                "Sing like never before",
+                                "Oh my soul",
+                                "I'll worship Your holy name"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "You're rich in love and You're slow to anger",
+                                "Your name is great and Your heart is kind",
+                                "For all Your goodness, I will keep on singing",
+                                "Ten thousand reasons for my heart to find"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "So bless the Lord, oh my soul",
+                                "Oh my soul",
+                                "Worship His holy name",
+                                "Sing like never before",
+                                "Oh my soul",
+                                "I'll worship Your holy name"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "Bless the Lord, oh my soul",
+                                "Oh my soul",
+                                "Worship His holy name",
+                                "Sing like never before",
+                                "Oh my soul",
+                                "I'll worship Your holy name"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "And on that day when my strength is failing",
+                                "The end draws near and my time has come",
+                                "Still, my soul will sing Your praise unending",
+                                "Ten thousand years and then forevermore",
+                                "Forevermore"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "So bless the Lord, oh my soul",
+                                "Oh my soul",
+                                "Worship His holy name",
+                                "Sing like never before",
+                                "Oh my soul",
+                                "I'll worship Your holy name"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "Bless the Lord, oh my soul",
+                                "Oh my soul",
+                                "Worship His holy name",
+                                "Sing like never before",
+                                "Oh my soul",
+                                "I'll worship Your holy name"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Sermon",
+            "title": "Message",
+            "subtitle": "Bro. Srinivas"
+        },
+        {
+            "name": "Announcements",
+            "title": "Announcements",
+            "subtitle": "Praise/Prayer Points"
+        },
+        {
+            "name": "Closing Prayer",
+            "title": "Closing Prayer",
+            "subtitle": "Bro. Samuel"
+        }
+    ]
+}
