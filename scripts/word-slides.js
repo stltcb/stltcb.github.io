@@ -453,7 +453,7 @@
                     {
                         name: element,
                         title: element,
-                        subTitle: ''
+                        subTitle: element
                     }
                 );
             });
@@ -484,9 +484,9 @@
 
         body.appendChild(rootSection);
 
-        const summarySlide = getSummarySlide(obj.sections, obj.subtitle);
-        const summarySection = getSection([summarySlide], 'Summary');
-        body.appendChild(summarySection);
+        // const summarySlide = getSummarySlide(obj.sections, obj.subtitle);
+        // const summarySection = getSection([summarySlide], 'Summary');
+        // body.appendChild(summarySection);
 
 
         for (let index = 0; index < obj.sections.length; index++) {
