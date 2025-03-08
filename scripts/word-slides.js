@@ -453,7 +453,7 @@
                     {
                         name: element,
                         title: element,
-                        subTitle: element
+                        subtitle: element
                     }
                 );
             });
