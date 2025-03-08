@@ -467,7 +467,7 @@
             obj.subtitle = getLongDate(new Date());
         }
         if (!obj.background || obj.background === '') {
-            obj.background = 'https://i.swncdn.com/media/800w/via/8133-sunburst-through-lilac-clouds-in-sky-rising-c.webp';
+            obj.background = '';
         }         
         
         const dateLabel = document.getElementById('date');
