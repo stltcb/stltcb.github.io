@@ -144,7 +144,7 @@ footer.dark-mode {
         </div>
         <div class="col"> <span id="chap" class="chapter">chap</span> </div>
         <!-- Dropdown on Right -->
-        <div class="col-auto align-items-center">
+        <div class="col-auto mr-0">
           <div class="d-flex align-items-center">
           <button id="testmentButton" class="btn old-testment">Old_Testment</button>
           <select id="dropdown1" class="form-control mr-0">
@@ -162,7 +162,7 @@ footer.dark-mode {
       </div>
     </div>    
   </div>
-
+</div>
 </header>
 
 <div class="content">
@@ -250,12 +250,14 @@ function hideBooks(oldTestment) {
           options[i].style.display = i > 38 ? 'none' : 'block';
       }
       dropdown1.selectedIndex = 0;
+      selectBook(books[0], chapters[0]);
     }
     else {
       for (let i = 0; i < options.length; i++) {
           options[i].style.display = i < 39 ? 'none' : 'block';
       }
       dropdown1.selectedIndex = 39;
+      selectBook(books[39], chapters[39]);
     }
 }
 
@@ -328,7 +330,7 @@ function addButtonsToDiv(count) {
       selectChapter(hiddenText.value, `${index}`);
       verseDropdown.classList.toggle("show");
     });
-    verseDropdown.appendChild(button2);    
+    // verseDropdown.appendChild(button2);    
   }
 }
 
