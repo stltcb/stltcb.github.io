@@ -72,7 +72,7 @@ footer.dark-mode {
 }
 
 .verse-section p {
-  font-size: 3em;
+  font-size: 2em;
   margin-bottom: 5px;
   margin-top: 30px;
 }
@@ -87,6 +87,49 @@ footer.dark-mode {
   color: chocolate;
 }
 
+.old-testment {
+  font-weight: bolder;
+}
+
+.new-testment {
+  font-weight: bold;
+}
+
+
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  /* overflow: auto; */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
 </style>
 </head>
 <body>
@@ -94,20 +137,28 @@ footer.dark-mode {
   <div class="container ml-0 mr-0">
 
     <!-- First Row: Text on Left and Dropdown on Right -->
-    <div class="row align-items-center mb-3">
+    <div class="row align-items-center mb-0">
         <!-- Text on Left -->
         <div class="col">
             <h1 class="display-12 mb-0">Telugu Bible (BSI)</h1>
         </div>
         <div class="col"> <span id="chap" class="chapter">chap</span> </div>
         <!-- Dropdown on Right -->
-        <div class="col-auto">
+        <div class="col-auto align-items-center">
+          <div class="d-flex align-items-center">
+          <button id="testmentButton" class="btn old-testment">Old_Testment</button>
           <select id="dropdown1" class="form-control mr-0">
           </select>
+          <div class="dropdown mr-5">
+            <button onclick="myFunction()" class="dropbtn">Select_Chapter</button>
+            <div id="verseDropdown" class="dropdown-content">
+
+          </div>
+        </div>
         </div>
     </div>
     <div class="row">
-      <div id="verses" class="col d-flex justify-content-center">
+      <div id="verses" class="d-flex flex-wrap">
       </div>
     </div>    
   </div>
@@ -138,15 +189,26 @@ const verseA = document.getElementById('verseA');
 const dateSpan = document.getElementById('date');
 const verseCountInput = document.getElementById('verseCount');
 const darkModeToggle = document.getElementById('darkModeToggle');
+const testmentButton = document.getElementById('testmentButton');
 const body = document.body;
 const header = document.querySelector('header');
 const footer = document.querySelector('footer');
+const hiddenValue = document.getElementById('myHiddenValue');
+const hiddenText = document.getElementById('myHiddenText');
+const chapText = document.getElementById('chap');
+const dropdown1 = document.getElementById('dropdown1');
+const verseDropdown = document.getElementById('verseDropdown');
+
+function myFunction() {
+  document.getElementById("verseDropdown").classList.toggle("show");
+}
 
 function populateVerses(list) {
   verseA.innerHTML = '';
   list.forEach(verse => {
     verseA.innerHTML += `<p class="section-top">${verse}</p>`;
   });
+  verseA.scrollTop = 0;
 }
 
 var currentVerse = 1;
@@ -181,6 +243,36 @@ darkModeToggle.addEventListener('click', () => {
   }
 });
 
+function hideBooks(oldTestment) {
+  const options = dropdown1.querySelectorAll('option');
+    if (oldTestment) {
+      for (let i = 0; i < options.length; i++) {
+          options[i].style.display = i > 38 ? 'none' : 'block';
+      }
+      dropdown1.selectedIndex = 0;
+    }
+    else {
+      for (let i = 0; i < options.length; i++) {
+          options[i].style.display = i < 39 ? 'none' : 'block';
+      }
+      dropdown1.selectedIndex = 39;
+    }
+}
+
+testmentButton.addEventListener('click', () => {
+  if(testmentButton.classList.contains('new-testment')){
+    testmentButton.textContent = "Old_Testment";
+    testmentButton.classList.remove('new-testment')
+    testmentButton.classList.add('old-testment')
+    hideBooks(true);
+  }else{
+    testmentButton.textContent = "New_Testment";
+    testmentButton.classList.remove('old-testment')
+    testmentButton.classList.add('new-testment')
+    hideBooks(false);
+  }
+});
+
 function addOption(selectElement, optionText, optionValue) {
   const newOption = document.createElement("option");
   newOption.text = optionText;
@@ -188,50 +280,60 @@ function addOption(selectElement, optionText, optionValue) {
   selectElement.add(newOption);
 }
 
-const dropdown1 = document.getElementById('dropdown1');
 let bookIndex=0;
 books.forEach(element => {
   addOption(dropdown1, element, chapters[bookIndex]);
   bookIndex++;
 });
 
-  const hiddenValue = document.getElementById('myHiddenValue');
-  const hiddenText = document.getElementById('myHiddenText');
-  const chapText = document.getElementById('chap');
+function selectChapter(book, chapter) {
+  populateVerses(bible[book][chapter]);
+  chapText.innerText = `${book} - Chapter ${chapter}`;
+}
+
+function selectBook(book, chapterCount) {
+  addButtonsToDiv(chapterCount);
+  hiddenText.value = book;
+  hiddenValue.value = chapterCount;
+  selectChapter(book, 1);
+  document.getElementsByClassName('dropbtn')[0].innerText = `(1 - ${chapterCount})`;
+}
+
   dropdown1.addEventListener('change', function() {
     const selectedOption = this.options[this.selectedIndex];
-    selectChapter(selectedOption.text, parseInt(selectedOption.value));
+    selectBook(selectedOption.text, parseInt(selectedOption.value));
   });
 
 function addButtonsToDiv(count) {
   const verses = document.getElementById('verses');
+  const verseDropdown = document.getElementById('verseDropdown');
   verses.innerHTML = '';
+  verseDropdown.innerHTML = '';
   if (!verses) {
     console.error(`Div with id "${verses}" not found.`);
     return;
   }
 
   for (let index = 1; index <= count; index++) {
-    const button = document.createElement('button');
-    button.textContent = index;
-    button.addEventListener('click', () => {
-      //alert(`Button "${index}" clicked!`);
-      populateVerses(bible[hiddenText.value][`${index}`]);
-      chapText.innerText = `${hiddenText.value} - Chapter ${index}`;
+    // const button = document.createElement('button');
+    // button.textContent = index;
+    // button.addEventListener('click', () => {
+    //   selectChapter(hiddenText.value, `${index}`);
+    // });
+    // verses.appendChild(button);
+
+    const button2 = document.createElement('button');
+    button2.textContent = index;
+    button2.addEventListener('click', () => {
+      selectChapter(hiddenText.value, `${index}`);
+      verseDropdown.classList.toggle("show");
     });
-    verses.appendChild(button);
+    verseDropdown.appendChild(button2);    
   }
 }
 
-function selectChapter(book, chapterCount) {
-  addButtonsToDiv(chapterCount);
-  populateVerses(bible[book]['1']);
-  hiddenText.value = book;
-  hiddenValue.value = chapterCount;
-  chapText.innerText = `${hiddenText.value} - Chapter 1`;
-}
-
-selectChapter(books[0], chapters[0]);
+selectBook(books[0], chapters[0]);
+hideBooks(true);
 
 </script>
 
