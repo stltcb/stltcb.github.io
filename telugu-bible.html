@@ -103,7 +103,7 @@
       <div class="d-flex flex-wrap justify-content-between align-items-center">
         <div class="title d-flex flex-nowrap gap-2">
           <h3>Telugu Bible</h3>
-            <div class="dropdown">
+            <div class="dropdown" hidden>
               <button class="btn btn-secondary dropdown-toggle" type="button" id="newDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 English Version
               </button>
@@ -184,6 +184,14 @@
           <!-- <button id="up-button" class="btn btn-secondary">Up</button> -->
           <!-- Down Button -->
           <!-- <button id="down-button" class="btn btn-secondary">Down</button> -->
+          <!-- Font Size Decrease Button -->
+          <button id="decrease-font-size" class="btn btn-secondary">
+            <i class="bi bi-zoom-out"></i> <!-- Zoom-out icon -->
+          </button>
+          <!-- Font Size Increase Button -->
+          <button id="increase-font-size" class="btn btn-secondary">
+            <i class="bi bi-zoom-in"></i> <!-- Zoom-in icon -->
+          </button>
           <!-- Toggle Dark Mode Button -->
           <button id="dark-mode-toggle" class="btn btn-secondary">
             <i id="dark-mode-icon" class="bi bi-moon"></i> <!-- Default icon for light mode -->
@@ -209,6 +217,7 @@
     const selChapter= document.getElementById('selChapter');
     const selChapterCount= document.getElementById('selChapterCount');
     const description = document.getElementById('chapter');
+    const dropdown3 = document.getElementById('dropdown3');
 
     // Function to populate verses into the list
     function populateVerses(verses) {
@@ -255,15 +264,15 @@
         const dropdown3Menu = document.querySelector('#dropdown3Menu .row');
         dropdown3Menu.innerHTML = '';
         if (chapterCount === 1) {
-            document.getElementById('dropdown3').innerText = `Chapters (1)`;
+            dropdown3.innerText = `Chapters (1)`;
             return;
         }
         for (let index = 1; index <= chapterCount; index++) {
             const menuItem = getMenuItem2(`${index}`, 2);
             dropdown3Menu.appendChild(menuItem);
         }
-        document.getElementById('dropdown3').innerText = `Chapters (1 - ${chapterCount})`;
-    }
+        dropdown3.innerText = `Chapters (1 - ${chapterCount})`;
+     }
 
     // Function to load verses from a JSON URL
     async function loadVerses() {
@@ -329,6 +338,14 @@
         const menuItem2 = getMenuItem(newTestmentBooks[index+14], chapterCounts[index+53]);
         dropdown2Menu.appendChild(menuItem2);
       }
+
+    //   document.querySelectorAll('#dropdown1Menu .dropdown-item, #dropdown2Menu .dropdown-item').forEach(item => {
+    //     item.addEventListener('click', () => {
+    //       // Open the Numbers dropdown
+    //       const numbersDropdown = new bootstrap.Dropdown(document.getElementById('dropdown3'));
+    //       numbersDropdown.show();
+    //     });
+    //   });      
     }
 
     // Function to enable verse-by-verse scrolling
@@ -400,6 +417,28 @@
       } else {
         darkModeIcon.classList.remove('bi-sun');
         darkModeIcon.classList.add('bi-moon');
+      }
+    });
+
+    // Font size adjustment
+    const verseList = document.getElementById('verse-list');
+    const minFontSize = 12; // Minimum font size in pixels
+    const maxFontSize = 24; // Maximum font size in pixels
+    let currentFontSize = 16; // Default font size in pixels
+
+    // Increase font size
+    document.getElementById('increase-font-size').addEventListener('click', () => {
+      if (currentFontSize < maxFontSize) {
+        currentFontSize += 2; // Increase by 2px
+        verseList.style.fontSize = `${currentFontSize}px`;
+      }
+    });
+
+    // Decrease font size
+    document.getElementById('decrease-font-size').addEventListener('click', () => {
+      if (currentFontSize > minFontSize) {
+        currentFontSize -= 2; // Decrease by 2px
+        verseList.style.fontSize = `${currentFontSize}px`;
       }
     });
 
