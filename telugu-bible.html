@@ -19,6 +19,9 @@
     .dark-mode footer {
       background-color: #444 !important;
     }
+    .dark-mode nav {
+      background-color: #444 !important;
+    }    
     .dark-mode .list-group-item {
       background-color: #555;
       color: #fff;
@@ -58,6 +61,7 @@
       flex: 1;
       overflow-y: auto;
       padding-bottom: 40px; /* Space for the footer */
+      position: relative; /* For positioning the vertical strip */
     }
     footer {
       position: fixed;
@@ -94,70 +98,113 @@
     .dropdown-menu-wide {
       width: 300px; /* Adjust the width as needed */
     }
+
+    /* Footer button styling */
+    footer .btn {
+      padding: 2px 8px; /* Reduced padding for buttons */
+      font-size: 14px; /* Reduced font size for buttons */
+    }
+
+    /* Header description styling */
+    .header-description {
+      margin: 0 auto; /* Center the description */
+    }
+
+    /* Vertical strip of hyperlinks */
+    .vertical-strip {
+      position: fixed;
+      right: 10px; /* Adjust the distance from the right edge */
+      top: 50%; /* Center vertically */
+      transform: translateY(-50%); /* Center vertically */
+      display: flex;
+      flex-direction: column;
+      gap: 10px; /* Space between links */
+      z-index: 1000; /* Ensure it's above other content */
+    }
+    .vertical-strip a {
+      color: #007bff; /* Bootstrap primary color */
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .vertical-strip a:hover {
+      text-decoration: underline;
+    }    
   </style>
 </head>
 <body>
   <!-- Header -->
   <header class="bg-light p-3">
-    <div class="container-fluid">
-      <div class="d-flex flex-wrap justify-content-between align-items-center">
-        <div class="title d-flex flex-nowrap gap-2">
-          <h3>Telugu Bible</h3>
-            <div class="dropdown" hidden>
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="newDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                English Version
-              </button>
-              <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="newDropdown" id="newDropdownMenu">
-                <!-- Items will be populated dynamically -->
-              </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <!-- Hamburger Menu Button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Description (Visible on Mobile) -->
+          <div class="header-description d-lg-none">
+            <h2 id="chapter" class="mb-0"> Loading .. </h2>
+        </div>
+          <!-- Collapsible Content -->
+          <div class="collapse navbar-collapse" id="navbarContent">
+            <div class="d-flex flex-wrap justify-content-between align-items-center w-100">
+              <div class="title">
+                <h3>Telugu Bible</h3>
+              </div>
+              <div class="description text-center my-2 my-md-0 d-none d-lg-block">
+                <h2 id="chapter2" class="mb-0"> Loading ... </h2>
+            </div>
+              <div class="dropdowns d-flex flex-wrap gap-2 justify-content-center justify-content-md-end">
+                <!-- New Dropdown (First Line) -->
+                <!-- <div class="d-flex flex-nowrap">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="newDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      New Dropdown
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="newDropdown" id="newDropdownMenu">
+                    </ul>
+                  </div>
+                </div> -->
+                <!-- Other Dropdowns (Second Line) -->
+                <div class="d-flex flex-wrap gap-2">
+                  <!-- Dropdown 1 -->
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                      OT Books
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-wide" aria-labelledby="dropdown1" id="dropdown1Menu">
+                      <div class="row">
+                        <!-- Items will be populated dynamically in two columns -->
+                      </div>
+                    </ul>
+                  </div>
+                  <!-- Dropdown 2 -->
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                      NT Books
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-wide" aria-labelledby="dropdown2" id="dropdown2Menu">
+                      <div class="row">
+                        <!-- Items will be populated dynamically in two columns -->
+                      </div>
+                    </ul>
+                  </div>
+                  <!-- Dropdown 3 -->
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown3" data-bs-toggle="dropdown" aria-expanded="false">
+                      Chapters
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdown3" id="dropdown3Menu">
+                      <div class="row">
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="description text-center my-2 my-md-0  d-flex flex-nowrap gap-2">
-          <h2 id="chapter" class="mb-0"> Loading ...</h2>
-        </div>
-        <div class="dropdowns d-flex flex-wrap gap-2 justify-content-center justify-content-md-end">
-          <!-- New Dropdown (First Line) -->
-
-          <!-- Other Dropdowns (Second Line) -->
-          <div class="d-flex flex-wrap gap-2">
-            <!-- Dropdown 1 -->
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                Old Testment
-              </button>
-              <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-wide" aria-labelledby="dropdown1" id="dropdown1Menu">
-                <div class="row">
-                  <!-- Items will be populated dynamically in two columns -->
-                </div>
-              </ul>
-            </div>
-            <!-- Dropdown 2 -->
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown2" data-bs-toggle="dropdown" aria-expanded="false">
-                New Testment
-              </button>
-              <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-wide" aria-labelledby="dropdown2" id="dropdown2Menu">
-                <div class="row">
-                  <!-- Items will be populated dynamically in two columns -->
-                </div>
-              </ul>
-            </div>
-            <!-- Dropdown 3 -->
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown3" data-bs-toggle="dropdown" aria-expanded="false">
-                Chapters
-              </button>
-              <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-wide" aria-labelledby="dropdown3" id="dropdown3Menu">
-                <div class="row">
-                  <!-- Items will be populated dynamically in two columns -->
-                </div>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+      </nav>
+    </header>
 
 <input type="hidden" id="engVersion" name="engVersion">
 <input type="hidden" id="selBook" name="selBook">
@@ -170,7 +217,12 @@
     <ul id="verse-list" class="list-group">
       <!-- Bible verses will be dynamically inserted here -->
     </ul>
-  </main>
+
+    <!-- Vertical strip of hyperlinks -->
+    <div id="vertical-strip" class="vertical-strip">
+
+    </div>
+</main>
 
   <!-- Footer -->
   <footer class="bg-light">
@@ -217,6 +269,7 @@
     const selChapter= document.getElementById('selChapter');
     const selChapterCount= document.getElementById('selChapterCount');
     const description = document.getElementById('chapter');
+    const description2 = document.getElementById('chapter2');
     const dropdown3 = document.getElementById('dropdown3');
 
     // Function to populate verses into the list
@@ -254,6 +307,18 @@
     function selectChapter(book, chapter) {
         populateVerses(bible[book][chapter]);
         description.innerText = `${book} - Chapter ${chapter}`;
+        description2.innerText = `${book} - Chapter ${chapter}`;
+
+        const verseCount = bible[book][chapter].length;
+
+        // const verticalStrip = document.getElementById('vertical-strip');
+        // verticalStrip.innerHTML = '';
+        // for (let index = 1; index <= verseCount; index++) {
+        //     const a = document.createElement('a');
+        //     a.href = '#';
+        //     a.textContent = index;
+        //     verticalStrip.appendChild(a);
+        // }
     }
 
     function selectBook(book, chapterCount) {
@@ -308,16 +373,16 @@
     // Function to populate dropdowns
     function populateDropdowns() {
       // Populate New Dropdown
-      const newDropdownMenu = document.getElementById('newDropdownMenu');
-      englishVersions.forEach(item => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.className = 'dropdown-item';
-        a.href = '#';
-        a.textContent = item;
-        li.appendChild(a);
-        newDropdownMenu.appendChild(li);
-      });
+    //   const newDropdownMenu = document.getElementById('newDropdownMenu');
+    //   englishVersions.forEach(item => {
+    //     const li = document.createElement('li');
+    //     const a = document.createElement('a');
+    //     a.className = 'dropdown-item';
+    //     a.href = '#';
+    //     a.textContent = item;
+    //     li.appendChild(a);
+    //     newDropdownMenu.appendChild(li);
+    //   });
 
       // Populate Dropdown 1 (two columns)
       const dropdown1Menu = document.querySelector('#dropdown1Menu .row');
@@ -423,7 +488,7 @@
     // Font size adjustment
     const verseList = document.getElementById('verse-list');
     const minFontSize = 12; // Minimum font size in pixels
-    const maxFontSize = 24; // Maximum font size in pixels
+    const maxFontSize = 32; // Maximum font size in pixels
     let currentFontSize = 16; // Default font size in pixels
 
     // Increase font size
