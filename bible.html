@@ -328,7 +328,7 @@
     }
 
     function selectChapter(book, chapter) {
-        populateVerses(bible[book][chapter], bible2[book][chapter]);
+        populateVerses(bible[book][chapter]);
         description.innerText = `${book} - Chapter ${chapter}`;
         description2.innerText = `${book} - Chapter ${chapter}`;
 
