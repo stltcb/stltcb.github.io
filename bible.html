@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telugu Bible</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Add Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    /* Dark mode styles */
+    .dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+    .dark-mode header {
+      background-color: #444 !important;
+    }
+    .dark-mode footer {
+      background-color: #444 !important;
+    }
+    .dark-mode nav {
+      background-color: #444 !important;
+    }    
+    .dark-mode .list-group-item {
+      background-color: #555;
+      color: #fff;
+      border-color: #666;
+    }
+    .dark-mode .dropdown-menu {
+      background-color: #444;
+      color: #fff;
+    }
+    .dark-mode .dropdown-item {
+      color: #fff;
+    }
+    .dark-mode .dropdown-item:hover {
+      background-color: #666;
+    }
+
+    .dropdown-item:hover {
+      background-color: #5f86b2;
+    }
+
+    .dropdown-item2 {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+    }
+
+    /* Layout styles */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    main {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 40px; /* Space for the footer */
+      position: relative; /* For positioning the vertical strip */
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      padding: 5px 0; /* Reduced padding */
+      text-align: center;
+      font-size: 14px; /* Reduced font size */
+    }
+
+    /* Hide scrollbar but keep scrolling */
+    main::-webkit-scrollbar {
+      width: 0; /* Hide scrollbar for WebKit browsers */
+    }
+    main {
+      scrollbar-width: none; /* Hide scrollbar for Firefox */
+      -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    }
+
+    /* Full-width content on large screens */
+    @media (min-width: 992px) {
+      .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      main .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+
+    /* Custom dropdown width */
+    .dropdown-menu-wide {
+      width: 300px; /* Adjust the width as needed */
+    }
+
+    /* Footer button styling */
+    footer .btn {
+      padding: 2px 8px; /* Reduced padding for buttons */
+      font-size: 14px; /* Reduced font size for buttons */
+    }
+
+    /* Header description styling */
+    .header-description {
+      margin: 0 auto; /* Center the description */
+    }
+
+    /* Vertical strip of hyperlinks */
+    .vertical-strip {
+      position: fixed;
+      right: 10px; /* Adjust the distance from the right edge */
+      top: 50%; /* Center vertically */
+      transform: translateY(-50%); /* Center vertically */
+      display: flex;
+      flex-direction: column;
+      gap: 10px; /* Space between links */
+      z-index: 1000; /* Ensure it's above other content */
+    }
+    .vertical-strip a {
+      color: #007bff; /* Bootstrap primary color */
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .vertical-strip a:hover {
+      text-decoration: underline;
+    }    
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <!-- Hamburger Menu Button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Description (Visible on Mobile) -->
+          <div class="header-description d-lg-none">
+            <h4 id="chapter" class="mb-0"> Loading .. </h4>
+        </div>
+          <!-- Collapsible Content -->
+          <div class="collapse navbar-collapse" id="navbarContent">
+            <div class="d-flex flex-wrap justify-content-between align-items-center w-100">
+              <div class="title">
+                <h3>Telugu Bible</h3>
+              </div>
+              <div class="description text-center my-2 my-md-0 d-none d-lg-block">
+                <h2 id="chapter2" class="mb-0"> Loading ... </h2>
+            </div>
+              <div class="dropdowns d-flex flex-wrap gap-2 justify-content-center justify-content-md-end">
+                <!-- New Dropdown (First Line) -->
+                <!-- <div class="d-flex flex-nowrap">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="newDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      New Dropdown
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="newDropdown" id="newDropdownMenu">
+                    </ul>
+                  </div>
+                </div> -->
+                <!-- Other Dropdowns (Second Line) -->
+                <div class="d-flex flex-wrap gap-2">
+                  <!-- Dropdown 1 -->
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                      OT Books
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-wide" aria-labelledby="dropdown1" id="dropdown1Menu">
+                      <div class="row">
+                        <!-- Items will be populated dynamically in two columns -->
+                      </div>
+                    </ul>
+                  </div>
+                  <!-- Dropdown 2 -->
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                      NT Books
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-wide" aria-labelledby="dropdown2" id="dropdown2Menu">
+                      <div class="row">
+                        <!-- Items will be populated dynamically in two columns -->
+                      </div>
+                    </ul>
+                  </div>
+                  <!-- Dropdown 3 -->
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown3" data-bs-toggle="dropdown" aria-expanded="false">
+                      Chapters
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdown3" id="dropdown3Menu">
+                      <div class="row">
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+<input type="hidden" id="engVersion" name="engVersion">
+<input type="hidden" id="selBook" name="selBook">
+<input type="hidden" id="selChapter" name="selChapter">
+<input type="hidden" id="selChapterCount" name="selChapterCount">
+
+  <!-- Body -->
+  <main class="container-fluid my-4 mt-0 mb-2">
+    <!-- <h4>Bible Verses</h4> -->
+    <ul id="verse-list" class="list-group">
+      <!-- Bible verses will be dynamically inserted here -->
+    </ul>
+
+    <!-- Vertical strip of hyperlinks -->
+    <div id="vertical-strip" class="vertical-strip">
+
+    </div>
+</main>
+
+  <!-- Footer -->
+  <footer class="bg-light">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="copyright">
+          <p class="mb-0">&copy; 2023 Bible Verses</p>
+        </div>
+        <div class="d-flex gap-2">
+          <!-- Up Button -->
+          <!-- <button id="up-button" class="btn btn-secondary">Up</button> -->
+          <!-- Down Button -->
+          <button id="down-button" class="btn btn-secondary">Down</button>
+          <!-- Font Size Decrease Button -->
+          <button id="decrease-font-size" class="btn btn-secondary">
+            <i class="bi bi-zoom-out"></i> <!-- Zoom-out icon -->
+          </button>
+          <!-- Font Size Increase Button -->
+          <button id="increase-font-size" class="btn btn-secondary">
+            <i class="bi bi-zoom-in"></i> <!-- Zoom-in icon -->
+          </button>
+          <!-- Toggle Dark Mode Button -->
+          <button id="dark-mode-toggle" class="btn btn-secondary">
+            <i id="dark-mode-icon" class="bi bi-moon"></i> <!-- Default icon for light mode -->
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Hardcoded arrays for dropdown items
+    const englishVersions = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"];
+    const oldTestmentBooks = ['Genesis', 'Exodus', 'Leviticus', 'Numbers', 'Deuteronomy', 'Joshua', 'Judges', 'Ruth', '1 Samuel', '2 Samuel', '1 Kings', '2 Kings', '1 Chronicles', '2 Chronicles', 'Ezra', 'Nehemiah', 'Esther', 'Job', 'Psalms', 'Proverbs', 'Ecclesiastes', 'Song of Solomon', 'Isaiah', 'Jeremiah', 'Lamentations', 'Ezekiel', 'Daniel', 'Hosea', 'Joel', 'Amos', 'Obadiah', 'Jonah', 'Micah', 'Nahum', 'Habakkuk', 'Zephaniah', 'Haggai', 'Zechariah', 'Malachi'];
+    const newTestmentBooks = ['Matthew', 'Mark', 'Luke', 'John', 'Acts', 'Romans', '1 Corinthians', '2 Corinthians', 'Galatians', 'Ephesians', 'Philippians', 'Colossians', '1 Thessalonians', '2 Thessalonians', '1 Timothy', '2 Timothy', 'Titus', 'Philemon', 'Hebrews', 'James', '1 Peter', '2 Peter', '1 John', '2 John', '3 John', 'Jude', 'Revelation'];
+    const chapterCounts = [50, 40, 27, 36, 34, 24, 21, 4, 31, 24, 22, 25, 29, 36, 10, 13, 10, 42, 150, 31, 12, 8, 66, 52, 5, 48, 12, 14, 3, 9, 1, 4, 7, 3, 3, 3, 2, 14, 4, 28, 16, 24, 21, 28, 16, 16, 13, 6, 6, 4, 4, 5, 3, 6, 4, 3, 1, 13, 5, 5, 3, 5, 1, 1, 1, 22];
+
+    let bible = {};
+    let bible2 = {};
+
+    const engVersion = document.getElementById('engVersion');
+    const selBook= document.getElementById('selBook');
+    const selChapter= document.getElementById('selChapter');
+    const selChapterCount= document.getElementById('selChapterCount');
+    const description = document.getElementById('chapter');
+    const description2 = document.getElementById('chapter2');
+    const dropdown3 = document.getElementById('dropdown3');
+
+    // Function to populate verses into the list
+    function populateVerses(verses, verses2) {
+      const verseList = document.getElementById('verse-list');
+      verseList.innerHTML = ''; // Clear existing content
+      verses.forEach((verse, i) => {
+        if (verses2) {
+            const li = document.createElement('li');
+            li.className = 'list-group-item';
+            // li.textContent = verse; // Assuming the JSON has a "text" field
+            
+            const div = document.createElement('div');
+            div.innerText = verse;
+
+            const div2 = document.createElement('div');
+            div2.innerText = verses2[i];
+
+            li.append(div);
+            li.append(div2);
+
+            verseList.appendChild(li);
+        }
+        else {
+            const li = document.createElement('li');
+            li.className = 'list-group-item';
+            li.textContent = verse; // Assuming the JSON has a "text" field
+            verseList.appendChild(li);
+        }
+    });
+
+      // Enable verse-by-verse scrolling
+    //   enableVerseScrolling();
+    }
+
+    function getMenuItem2(text, colWidth) {
+        const col = document.createElement('div');
+        col.className = `col-${colWidth} dropdown-item2`;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.className = 'dropdown-item dropdown-item2';
+        a.href = '#';
+        a.textContent = text;
+        a.addEventListener('click',  () => { 
+            selChapter.value = text;
+            selectChapter(selBook.value, text)
+        });
+        li.appendChild(a);
+        col.appendChild(li);
+        return col;
+    }
+
+    function selectChapter(book, chapter) {
+        populateVerses(bible[book][chapter], bible2[book][chapter]);
+        description.innerText = `${book} - Chapter ${chapter}`;
+        description2.innerText = `${book} - Chapter ${chapter}`;
+
+        const verseCount = bible[book][chapter].length;
+
+        // const verticalStrip = document.getElementById('vertical-strip');
+        // verticalStrip.innerHTML = '';
+        // for (let index = 1; index <= verseCount; index++) {
+        //     const a = document.createElement('a');
+        //     a.href = '#';
+        //     a.textContent = index;
+        //     verticalStrip.appendChild(a);
+        // }
+    }
+
+    function selectBook(book, chapterCount) {
+        selBook.value = book;
+        selChapterCount.value = chapterCount;
+        selectChapter(book, 1);
+
+        const dropdown3Menu = document.querySelector('#dropdown3Menu .row');
+        dropdown3Menu.innerHTML = '';
+        if (chapterCount === 1) {
+            dropdown3.innerText = `Chapters (1)`;
+            return;
+        }
+        for (let index = 1; index <= chapterCount; index++) {
+            const menuItem = getMenuItem2(`${index}`, 2);
+            dropdown3Menu.appendChild(menuItem);
+        }
+        dropdown3.innerText = `Chapters (1 - ${chapterCount})`;
+     }
+
+    // Function to load verses from a JSON URL
+    async function loadVerses() {
+      const url = 'https://stltcb.github.io/bibles/Telugu_Bible-BSI.json';
+      const url2 = 'https://stltcb.github.io/bibles/English_Standard_Version-2001.json';
+      
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Failed to load verses');
+        }
+        bible = await response.json();
+
+        const response2 = await fetch(url2);
+        if (!response.ok) {
+          throw new Error('Failed to load verses');
+        }
+        bible2 = await response2.json();
+
+        selectBook('Genesis',chapterCounts[0])
+
+        // var bookIndex = 0;
+        // var bb = {};
+        // for (const key in bible) {
+        //     bb[key] = {}
+        //     for (let index = 1; index <= chapterCounts[bookIndex]; index++) {
+        //         bb[key][`${index}`] = bible[key][`${index}`].length;
+        //     }
+        //     bookIndex++;
+        // }        
+        // console.log(JSON.stringify(bb));
+
+      } catch (error) {
+        console.error('Error loading verses:', error);
+      }
+    }
+
+    function getMenuItem(text, chapterCount) {
+        const col = document.createElement('div');
+        col.className = 'col-6';
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.className = 'dropdown-item';
+        a.href = '#';
+        a.textContent = text;
+        a.addEventListener('click',  () => { 
+            selectBook(text, chapterCount);
+        });
+        li.appendChild(a);
+        col.appendChild(li);
+        return col;
+    }
+
+    // Function to populate dropdowns
+    function populateDropdowns() {
+      // Populate New Dropdown
+    //   const newDropdownMenu = document.getElementById('newDropdownMenu');
+    //   englishVersions.forEach(item => {
+    //     const li = document.createElement('li');
+    //     const a = document.createElement('a');
+    //     a.className = 'dropdown-item';
+    //     a.href = '#';
+    //     a.textContent = item;
+    //     li.appendChild(a);
+    //     newDropdownMenu.appendChild(li);
+    //   });
+
+      // Populate Dropdown 1 (two columns)
+      const dropdown1Menu = document.querySelector('#dropdown1Menu .row');
+      for (let index = 0; index < oldTestmentBooks.length/2; index++) {
+        const menuItem = getMenuItem(oldTestmentBooks[index], chapterCounts[index]);
+        dropdown1Menu.appendChild(menuItem);
+        if (oldTestmentBooks.length <= index+20) break;
+        const menuItem2 = getMenuItem(oldTestmentBooks[index+20], chapterCounts[index+20]);
+        dropdown1Menu.appendChild(menuItem2);
+      }
+
+      // Populate Dropdown 2 (two columns)
+      const dropdown2Menu = document.querySelector('#dropdown2Menu .row');
+      for (let index = 0; index < newTestmentBooks.length/2; index++) {
+        const menuItem = getMenuItem(newTestmentBooks[index], chapterCounts[index+39]);
+        dropdown2Menu.appendChild(menuItem);
+        if (newTestmentBooks.length <= index+14) break;
+        const menuItem2 = getMenuItem(newTestmentBooks[index+14], chapterCounts[index+53]);
+        dropdown2Menu.appendChild(menuItem2);
+      }
+
+    //   document.querySelectorAll('#dropdown1Menu .dropdown-item, #dropdown2Menu .dropdown-item').forEach(item => {
+    //     item.addEventListener('click', () => {
+    //       // Open the Numbers dropdown
+    //       const numbersDropdown = new bootstrap.Dropdown(document.getElementById('dropdown3'));
+    //       numbersDropdown.show();
+    //     });
+    //   });      
+    }
+
+    document.getElementById('down-button').addEventListener('click', () => {
+        const verseList = document.getElementById('verse-list');
+        const verses = document.querySelectorAll('.list-group-item');
+        verseList.scrollTo({
+            top: 600,
+            behavior: 'smooth'
+          });
+    });
+
+    // Function to enable verse-by-verse scrolling
+    function enableVerseScrolling() {
+      const verses = document.querySelectorAll('.list-group-item');
+
+      // Scroll to a specific verse
+      function scrollToVerse(index) {
+        if (index >= 0 && index < verses.length) {
+          window.scrollTo({
+            top: verses[index].offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      }
+
+      // Handle Up button click
+      document.getElementById('up-button').addEventListener('click', () => {
+        const currentScroll = window.scrollY;
+        let targetIndex = -1;
+
+        // Find the previous verse
+        for (let i = verses.length - 1; i >= 0; i--) {
+          if (verses[i].offsetTop < currentScroll) {
+            targetIndex = i;
+            break;
+          }
+        }
+
+        if (targetIndex !== -1) {
+          scrollToVerse(targetIndex);
+        }
+      });
+
+      // Handle Down button click
+      document.getElementById('down-button').addEventListener('click', () => {
+        const currentScroll = window.scrollY;
+        let targetIndex = -1;
+
+        // Find the next verse
+        for (let i = 0; i < verses.length; i++) {
+          if (verses[i].offsetTop > currentScroll) {
+            targetIndex = i;
+            break;
+          }
+        }
+
+        if (targetIndex !== -1) {
+          scrollToVerse(targetIndex);
+        }
+      });
+    }
+
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeIcon = document.getElementById('dark-mode-icon');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      document.querySelector('header').classList.toggle('dark-mode');
+      document.querySelector('footer').classList.toggle('dark-mode');
+      document.querySelectorAll('.list-group-item').forEach(item => {
+        item.classList.toggle('dark-mode');
+      });
+
+      // Toggle the icon between moon (dark mode) and sun (light mode)
+      if (darkModeIcon.classList.contains('bi-moon')) {
+        darkModeIcon.classList.remove('bi-moon');
+        darkModeIcon.classList.add('bi-sun');
+      } else {
+        darkModeIcon.classList.remove('bi-sun');
+        darkModeIcon.classList.add('bi-moon');
+      }
+    });
+
+    // Font size adjustment
+    const verseList = document.getElementById('verse-list');
+    const minFontSize = 12; // Minimum font size in pixels
+    const maxFontSize = 32; // Maximum font size in pixels
+    let currentFontSize = 16; // Default font size in pixels
+
+    // Increase font size
+    document.getElementById('increase-font-size').addEventListener('click', () => {
+      if (currentFontSize < maxFontSize) {
+        currentFontSize += 2; // Increase by 2px
+        verseList.style.fontSize = `${currentFontSize}px`;
+      }
+    });
+
+    // Decrease font size
+    document.getElementById('decrease-font-size').addEventListener('click', () => {
+      if (currentFontSize > minFontSize) {
+        currentFontSize -= 2; // Decrease by 2px
+        verseList.style.fontSize = `${currentFontSize}px`;
+      }
+    });
+
+    // Populate dropdowns when the page loads
+    populateDropdowns();
+
+    // Load verses when the page loads
+    loadVerses();
+  </script>
+</body>
+</html>
