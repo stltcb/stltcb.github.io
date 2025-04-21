@@ -1,19 +1,175 @@
 {
     "date": "04/20/2025",
     "title": "Telugu Fellowship",
-    "subtitle": "Worship",
+    "subtitle": "Easter Worship",
     "background": "",
     "sections": [
         {
             "name": "Opening Prayer",
             "title": "Opening Prayer",
-            "subtitle": "Bro Samuel"
+            "subtitle": "Bro Naveen"
         },
         {
             "name": "Songs",
             "title": "Songs",
-            "subtitle": "Worship",
+            "subtitle": "Happy Easter",
             "content": [
+                {
+                    "heading": "గీతం గీతం జయ జయ గీతం",
+                    "initial": " గీతం",
+                    "choruslines": "4",
+                    "slides": [
+                        {
+                            "lines": [
+                                "గీతం గీతం జయ జయ గీతం",
+                                "చేయి తట్టి పాడెదము (2)",
+                                "యేసు రాజు లేచెను హల్లెలూయ",
+                                "జయ మార్భటించెదము (2)"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "చూడు సమాధిని మూసినరాయి",
+                                "దొరలింపబడెను",
+                                "అందు వేసిన ముద్ర కావలి నిల్చెను",
+                                "దైవ సుతుని ముందు"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "వలదు వలదు యేడువవలదు",
+                                "వెళ్ళుడి గలిలయకు",
+                                "తాను చెప్పిన విధమున తిరిగి లేచెను",
+                                "పరుగిడి ప్రకటించుడి"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "అన్న కయప వారల సభయు",
+                                "అదరుచు పరుగిడిరి",
+                                "ఇంక దూత గణముల ధ్వనిని వినుచు",
+                                "వణకుచు భయపడిరి"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "గుమ్మముల్ తెరచి చక్కగ నడువుడి",
+                                "జయ వీరుడు రాగా",
+                                "మీ మేళతాళ వాద్యముల్ బూర",
+                                "లెత్తి ధ్వనించుడి"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "heading": "… God sent His son, they called Him, Jesus;",
+                    "initial": "",
+                    "choruslines": "0",
+                    "slides": [
+                        {
+                            "lines": [
+                                "… God sent His son, they called Him, Jesus;",
+                                "He came to love, heal and forgive;",
+                                "He lived and died to buy my pardon,",
+                                "An empty grave is there to prove my Savior lives!",
+                                "… Because He lives, I can face tomorrow,",
+                                "Because He lives, all fear is gone;",
+                                "Because I know He holds the future,",
+                                "And life is worth the living,",
+                                "Just because He lives!",
+                                "And feel the pride and joy he brings;",
+                                "But greater still the calm assurance:",
+                                "This child can face uncertain days because He Lives!"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "Because He lives, all fear is gone;",
+                                "Because I know He holds the future,",
+                                "And life is worth the living,",
+                                "Just because He lives!"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "I'll fight life's final war with pain;",
+                                "And then, as death gives way to victory,",
+                                "I'll see the lights of glory and I'll know He lives!"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "Because He lives, all fear is gone;",
+                                "Because I know He holds the future,",
+                                "And life is worth the living,",
+                                "Just because He lives!"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "heading": "ఎవరు చూపించలేని – ఇలలో నను వీడిపోని",
+                    "initial": "ఎవరు",
+                    "choruslines": 0,
+                    "slides": [
+                        {
+                            "lines": [
+                                "ఎవరు చూపించలేని – ఇలలో నను వీడిపోని",
+                                "ఎంతటి ప్రేమ నీది – ఇంతగా కోరుకుంది – మరువను యేసయ్యా (2)",
+                                "నీ కథే నన్నే తాకగా – నా మదే నిన్నే చేరగా",
+                                "నా గురే నీవై యుండగా – నీ దరే నే చేరానుగా"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "తీరాలే దూరమాయే – కాలాలే మారిపోయే",
+                                "ఎదురైన ఎండమావే – కన్నీటి కానుకాయే",
+                                "నా గుండె లోతులోన – నే నలిగిపోతువున్నా",
+                                "ఏ దారి కానరాక – నీ కొరకు వేచివున్నా"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "ఎడబాటులేని గమనాన – నిను చేరుకున్న సమయాన",
+                                "నను ఆదరించే ఘన ప్రేమ – అపురూపమైన తొలిప్రేమ",
+                                "ఏకమై తోడుగా – ఊపిరే నీవుగా",
+                                "ఎవ్వరూ లేరుగా – యేసయ్యా నీవెగా"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "ఎవరు చూపించలేని – ఇలలో నను వీడిపోని",
+                                "ఎంతటి ప్రేమ నీది – ఇంతగా కోరుకుంది – మరువను యేసయ్యా (2)",
+                                "నీ కథే నన్నే తాకగా – నా మదే నిన్నే చేరగా",
+                                "నా గురే నీవై యుండగా – నీ దరే నే చేరానుగా"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "ఈ లోక జీవితాన – వేసారిపోతువున్నా",
+                                "విలువైన నీదు వాక్యం – వెలిగించె నా ప్రాణం",
+                                "నీ సన్నిధానమందు – సీయోను మార్గమందు",
+                                "నీ దివ్య సేవలోనే – నడిపించే నా ప్రభూ"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "నీ తోటి సాగు పయనాన – నను వీడలేదు క్షణమైన",
+                                "నీ స్వరము చాలు ఉదయాన – నిను వెంబడించు తరుణాన",
+                                "శాశ్వత ప్రేమతో – సత్యవాక్యంబుతో",
+                                "నిత్యము తోడుగా – నిలిచె నా యేసయ్యా"
+                            ]
+                        },
+                        {
+                            "lines": [
+                                "ఎవరు చూపించలేని – ఇలలో నను వీడిపోని",
+                                "ఎంతటి ప్రేమ నీది – ఇంతగా కోరుకుంది – మరువను యేసయ్యా (2)",
+                                "నీ కథే నన్నే తాకగా – నా మదే నిన్నే చేరగా",
+                                "నా గురే నీవై యుండగా – నీ దరే నే చేరానుగా"
+                            ]
+                        }
+                    ]
+                },
                 {
                     "heading": "సుందరమైన దేహాలెన్నో శిథిలం కాలేదా?",
                     "initial": "సుందరమైన",
@@ -96,53 +252,6 @@
                     ]
                 },
                 {
-                    "heading": "గీతం గీతం జయ జయ గీతం",
-                    "initial": " గీతం",
-                    "choruslines": "4",
-                    "slides": [
-                        {
-                            "lines": [
-                                "గీతం గీతం జయ జయ గీతం",
-                                "చేయి తట్టి పాడెదము (2)",
-                                "యేసు రాజు లేచెను హల్లెలూయ",
-                                "జయ మార్భటించెదము (2)"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "చూడు సమాధిని మూసినరాయి",
-                                "దొరలింపబడెను",
-                                "అందు వేసిన ముద్ర కావలి నిల్చెను",
-                                "దైవ సుతుని ముందు"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "వలదు వలదు యేడువవలదు",
-                                "వెళ్ళుడి గలిలయకు",
-                                "తాను చెప్పిన విధమున తిరిగి లేచెను",
-                                "పరుగిడి ప్రకటించుడి"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "అన్న కయప వారల సభయు",
-                                "అదరుచు పరుగిడిరి",
-                                "ఇంక దూత గణముల ధ్వనిని వినుచు",
-                                "వణకుచు భయపడిరి"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "గుమ్మముల్ తెరచి చక్కగ నడువుడి",
-                                "జయ వీరుడు రాగా",
-                                "మీ మేళతాళ వాద్యముల్ బూర",
-                                "లెత్తి ధ్వనించుడి"
-                            ]
-                        }
-                    ]
-                },
-                {
                     "heading": "యూదా రాజ సింహం తిరిగి లేచెను",
                     "initial": "",
                     "choruslines": "4-1",
@@ -189,52 +298,6 @@
                             ]
                         }
                     ]
-                },
-                {
-                    "heading": "… God sent His son, they called Him, Jesus;",
-                    "initial": "",
-                    "choruslines": "0",
-                    "slides": [
-                        {
-                            "lines": [
-                                "… God sent His son, they called Him, Jesus;",
-                                "He came to love, heal and forgive;",
-                                "He lived and died to buy my pardon,",
-                                "An empty grave is there to prove my Savior lives!",
-                                "… Because He lives, I can face tomorrow,",
-                                "Because He lives, all fear is gone;",
-                                "Because I know He holds the future,",
-                                "And life is worth the living,",
-                                "Just because He lives!",
-                                "And feel the pride and joy he brings;",
-                                "But greater still the calm assurance:",
-                                "This child can face uncertain days because He Lives!"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "Because He lives, all fear is gone;",
-                                "Because I know He holds the future,",
-                                "And life is worth the living,",
-                                "Just because He lives!"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "I'll fight life's final war with pain;",
-                                "And then, as death gives way to victory,",
-                                "I'll see the lights of glory and I'll know He lives!"
-                            ]
-                        },
-                        {
-                            "lines": [
-                                "Because He lives, all fear is gone;",
-                                "Because I know He holds the future,",
-                                "And life is worth the living,",
-                                "Just because He lives!"
-                            ]
-                        }
-                    ]
                 }
             ]
         },
@@ -244,14 +307,9 @@
             "subtitle": "Bro. Srinivas"
         },
         {
-            "name": "Announcements",
-            "title": "Announcements",
-            "subtitle": "Praise/Prayer Points"
-        },
-        {
             "name": "Closing Prayer",
             "title": "Closing Prayer",
-            "subtitle": "Bro. Mahesh"
+            "subtitle": "Bro. Uday"
         }
     ]
 }
