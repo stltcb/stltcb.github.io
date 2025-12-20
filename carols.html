@@ -23,16 +23,13 @@ body, html {
 }
 
 body {
-    background-image: url("https://images.unsplash.com/photo-1607553667083-c45f60f55d7a");
-    background-size: cover;
-    background-position: center;
     color: white;
 }
 
 /* Header */
 header {
     background: linear-gradient(90deg, var(--red), var(--green));
-    padding: 14px 20px;
+    /* padding: 14px 20px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,7 +81,7 @@ header h1 {
 .lyrics {
     position: relative;
     flex: 1;
-    background-image: url("https://images.unsplash.com/photo-1543589077-47d81606c1bf");
+    background-image: url("https://stltcb.github.io/images/holy-family.png");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -379,7 +376,7 @@ document.getElementById("song-list").firstElementChild.innerHTML = songsList.map
 function showLyrics(song) {
     currentSong = song;
     document.getElementById("lyrics-title").textContent =
-        event.target.textContent;
+        `${song.replace('song', '')} ${event.target.textContent}`;
 
     updateLyrics();
 
