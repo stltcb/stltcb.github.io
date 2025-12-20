@@ -127,6 +127,33 @@ const songTitle = document.getElementById('songTitle');
 const songLyrics = document.getElementById('songLyrics');
 const langToggle = document.getElementById('langToggle');
 
+// Font controls
+const increaseFontBtn = document.getElementById('increaseFont');
+const decreaseFontBtn = document.getElementById('decreaseFont');
+
+// lyrics font size state (px)
+const FONT_KEY = 'lyricsFontSize';
+let lyricsFontSize = null;
+
+function applyLyricsFontSize(size) {
+    lyricsFontSize = Math.max(12, Math.min(40, size)); // clamp between 12 and 40px
+    if (songLyrics) songLyrics.style.fontSize = lyricsFontSize + 'px';
+    try { localStorage.setItem(FONT_KEY, String(lyricsFontSize)); } catch (e) {}
+}
+
+// initialize font size from storage or computed style
+(function initFontSize() {
+    try {
+        const stored = parseFloat(localStorage.getItem(FONT_KEY));
+        if (!isNaN(stored)) { applyLyricsFontSize(stored); return; }
+    } catch (e) {}
+    if (songLyrics) {
+        const comp = window.getComputedStyle(songLyrics).fontSize;
+        const px = parseFloat(comp) || 16;
+        applyLyricsFontSize(px);
+    }
+})();
+
 // Current selection state
 let selectedLang = 'telugu'; // default language for lyrics
 let currentHymn = null;
@@ -217,4 +244,18 @@ if (langToggle) {
             songLyrics.textContent = getTextForLang(currentHymn, selectedLang);
         }
     });
+}
+
+// Wire font control buttons (if present)
+if (increaseFontBtn || decreaseFontBtn) {
+    if (increaseFontBtn) {
+        increaseFontBtn.addEventListener('click', () => {
+            applyLyricsFontSize((lyricsFontSize || 16) + 2);
+        });
+    }
+    if (decreaseFontBtn) {
+        decreaseFontBtn.addEventListener('click', () => {
+            applyLyricsFontSize((lyricsFontSize || 16) - 2);
+        });
+    }
 }
