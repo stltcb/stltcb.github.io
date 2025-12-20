@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCB Christmas Carols</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <button class="menu-btn" id="menuBtn" data-testid="button-menu-toggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <h1 class="header-title">TCB Christmas Carols</h1>
+      <div class="header-spacer"></div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Sidebar Menu -->
+    <nav class="sidebar" id="sidebar" data-testid="sidebar-songs">
+      <div class="sidebar-header">
+        <h2>Song Index</h2>
+        <button class="close-btn" id="closeBtn" data-testid="button-close-sidebar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <ul class="song-list" id="songList">
+        <!-- Songs will be populated here -->
+      </ul>
+    </nav>
+
+    <!-- Overlay for sidebar on mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+      <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-content">
+          <div class="welcome-icon">🎄</div>
+          <h2>Welcome to Christmas <i>Carols</i></h2>
+          <p>Select a song from the index to view the lyrics</p>
+        </div>
+      </div>
+      <div class="song-view" id="songView" style="display: none;">
+        <div class="song-title-row">
+          <h2 id="songTitle"></h2>
+          <div class="lang-toggle" id="langToggle" role="tablist" aria-label="Language switch">
+            <button class="lang-btn active" data-lang="telugu" aria-pressed="true">TEL</button>
+            <button class="lang-btn" data-lang="english" aria-pressed="false">EN</button>
+          </div>
+        </div>
+        <div class="song-lyrics" id="songLyrics"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Christmas Hymns | A festive collection of beloved carols</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
