@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TCB Carols - 2025</title>
+
+<style>
+:root {
+    --red: #b11226;
+    --green: #0f5132;
+    --gold: #f5c542;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    height: 100%;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background-image: url("https://images.unsplash.com/photo-1607553667083-c45f60f55d7a");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, var(--red), var(--green));
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--gold);
+}
+
+header h1 {
+    margin: 0;
+    color: var(--gold);
+}
+
+#menu-toggle {
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+/* Song list */
+.song-list {
+    width: 260px;
+    background: rgba(15, 81, 50, 0.85);
+    padding: 20px;
+    border-right: 2px solid var(--gold);
+}
+
+.song-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.song-list li {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.song-list li:hover {
+    background: var(--red);
+    color: var(--gold);
+}
+
+/* 🎅 Lyrics Pane */
+.lyrics {
+    position: relative;
+    flex: 1;
+    background-image: url("https://images.unsplash.com/photo-1543589077-47d81606c1bf");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dark overlay */
+.lyrics-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 0;
+}
+
+/* Header layout */
+.lyrics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--gold);
+    background: rgba(177, 18, 38, 0.85);
+    border-bottom: 2px solid var(--gold);
+    z-index: 1;
+}
+
+/* Language switch */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Toggle switch */
+.lang-switch input {
+    display: none;
+}
+
+.slider {
+    width: 40px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.lang-switch input:checked + .slider {
+    background: var(--green);
+}
+
+.lang-switch input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+.lang-label {
+    color: var(--gold);
+    font-weight: bold;
+}
+
+/* Scrollable lyrics text */
+.lyrics-body {
+    position: relative;
+    z-index: 1;
+    padding: 20px 24px;
+    overflow-y: auto;
+    flex: 1;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.lyrics-body h3 {
+    margin-top: 0;
+    color: var(--green);
+}
+
+/* Dark overlay for readability */
+.lyrics::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 0;
+}
+
+/* Text above overlay */
+.lyrics-content {
+    position: relative;
+    z-index: 1;
+}
+
+.lyrics h2 {
+    color: var(--gold);
+    border-bottom: 2px solid var(--red);
+    padding-bottom: 6px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    #menu-toggle {
+        display: block;
+    }
+
+    .song-list {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+        z-index: 10;
+    }
+
+    .song-list.show {
+        transform: translateX(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎄 TCB Christmas Carols 2025</h1>
+    <div id="menu-toggle">☰</div>
+</header>
+
+<div class="container">
+
+    <div class="song-list" id="song-list">
+        <ol>
+        </ol>
+    </div>
+
+    <div class="lyrics">
+        <div class="lyrics-overlay"></div>
+
+        <!-- Fixed Header -->
+        <div class="lyrics-header">
+            <span id="lyrics-title">🎅 Merry Christmas !!</span>
+
+            <!-- Language Switch -->
+            <label class="lang-switch">
+                <input type="checkbox" id="lang-toggle" />
+                <span class="slider"></span>
+                <span class="lang-label">ES</span>
+            </label>
+        </div>
+
+        <!-- Scrollable Lyrics -->
+        <div class="lyrics-body" id="lyrics-body">
+            <h3><i>“She will give birth to a son, and you are to give him the name Jesus, because he will save his people from their sins.”</i><br><strong>– Matthew 1:21</strong></h3>
+            <h3><i>“For unto us a child is born, unto us a son is given: and the government shall be upon his shoulder: and his name shall be called Wonderful, Counsellor, The mighty God, The everlasting Father, The Prince of Peace.”</i><br><strong>– Isaiah 9:6</strong></h3>
+            <h3><i>"But the angel said to them, 'Do not be afraid. I bring you good news that will cause great joy for all the people. Today in the town of David a Savior has been born to you; he is the Messiah, the Lord.'"</i><br><strong>- Luke 2:10-11</strong></h3>
+            <h3><i>“Make a joyful noise to the Lord, all the earth! Break forth into joyous song and sing praises!”</i><br><strong>– Psalm 98:4</strong></h3>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+let currentSong = null;
+let currentLang = "telugu";
+
+const songsList = [
+    "Nazarethu patnana",
+    "Vinthaina taaraka",
+    "Kresthu puttenu",
+    "Redu nedu",
+    "Taara velisindhii",
+    "Sudha Madhura Kiranala",
+    "Chali Rathrii",
+    "Dutha Pata Padudi",
+    "Thoorpu dikhu chukka putte",
+    "Bethlahemu lo Sandhadi",
+    "Bethlahemu lo nanta",
+    "Joy to the world",
+    "Light of the world",
+    "Angels we have heard",
+    "Blessed Assurance",
+    "We wish you a Merry Christmas"
+];
+
+const lyricsData = {
+    song1: {
+        "url": "https://waytochurch.com/lyrics/song/22735/nazarethu-patnaana-nagumalle-dharani",
+        "telugu": "నజరేతు పట్నాన నగుమల్లె దరని లొ\nయొసేపు మరియమ్మ నగుమల్లె దరని లొ\nహల్లెలుయ (x4)\n\nమేము వెల్లి చూచినాము స్వామి యెసు నాదుని\nప్రెమ మ్రొక్కి వచినాము మామనమ్బు లల్లరగ\nబెతలెము పురములొన బీద కన్య మరియకు\nపేదగ సురూపు దాల్చి వెలసె పశుల పాకలొ\n\nపేద వడ్ల వారి కన్య మరియమ్మ\nప్రెమ గల యేసు తల్లి మరియమ్మ\nప్రెమ గల్ల యెసు తల్లి\nపెరెల్లిన దేవ దేవుడె యెసయ్య\nప్రెమ గల అవతారం\nస్వర్గ ద్వరాలు తెరిచిరి యెసయ్య\nస్వర్గ రాజు పుట్ట గనె యెసయ్య\nస్వర్గ రాజు పుట్ట గనె\nసరుగున దూతల్ వచిరి యెసయ్య\nచక్కని పాటల్ పాడిరి\n\nనువు బొయె దారి లొ యెరుశలెము\nగుడి కాడ అచం మల్లె పూల తొట యెసయ్య\nదొడ్డు దొడ్డు బైబిలు దొసిట్లొ పెట్టుకొని\nదొరొల్లె బయిలెల్లి నాడె యెసయ్య\n\nరాజులకు రాజు పుట్టన్నయ్య\nరా రె చూడ మనం ఎల్లుదం అన్నయ్య\nతారన్ జూచి తూర్పు గ్యనుల్ అన్నయ్య\nతరలి నారె బెత్లహెమ్ అన్నయ్య\n\nపద ర పొదాము రన్న\nశ్రి యెసుని చూడ\nపద ర పొదము రన్న\nశ్రి యెసన్న నట లొక రక్షకుడట\nశ్రి యెసన్న నట లొక రక్షకుడట\nలొకుల్ అందరికయ్యొ ఎక రక్షకుడట\nలొకుల్ అందరికయ్యొ ఎక రక్షకుడట\nపద ర హెయ్ పద ర హెయ్\nపద ర పొదము రన్న\nశ్రి యెసుని చూడ\nపద ర పొదాము రన్న",
+        "english": "najarethu patnaana nagumalle dharani lo\nyosepu mariyamma nagumalle dharani lo\nhalleluya (x4)\n\nmemu velli chuchinaamu svaami yesu naadhuni\nprema mrokki vachinaamu maamanambu lallaraga\nbethalemu puramulona beedha kanya mariyaku\npedhaga suroopu dhaalchi velase pashula paakalo\n\npedha vadla vaari kanya mariyamma\nprema gala yesu thalli mariyamma\nprema galla yesu thalli\nperellina dheva dhevude yesayya\nprema gala avathaaram\nsvarga dhvaraalu therichiri yesayya\nsvarga raaju putta gane yesayya\nsvarga raaju putta gane\nsaruguna dhoothal vachiri yesayya\nchakkani paatal paadiri\n\nnuvu boye dhaari lo yerushalemu\ngudi kaada acham malle poola thota yesayya\ndhoddu dhoddu baibilu dhositlo pettukoni\ndhorolle bayilelli naade yesayya\n\nraajulaku raaju puttannayya\nraa re chuda manam elludham annayya\nthaaran joochi thoorpu gyanul annayya\ntharali naare bethlahem annayya\n\npadha ra podhaamu ranna\nshri yesuni chuda\npadha ra podhamu ranna\nshri yesanna nata loka rakshakudata\nshri yesanna nata loka rakshakudata\nlokul amdharikayyo eka rakshakudata\nlokul amdharikayyo eka rakshakudata\npadha ra hey padha ra hey\npadha ra podhamu ranna\nshri yesuni chuda\npadha ra podhaamu ranna"
+    },
+    song2: {
+        "url": "https://christianlyricz.com/2015/12/23/vinthaina-thaaraka/",
+        "telugu": "వింతైన తారక వెలిసింది గగనాన\nయేసయ్య జన్మస్థలము చూపించు కార్యాన (2)\nజ్ఞానులకే తప్పలేదు ఆ తార అనుసరణ\nదైవమే పంపెనని గ్రహియించు హృదయాన (2)\n\nమనమంతా జగమంతా\nతారవలె క్రీస్తును చాటుదాం\nహ్యాప్పీ క్రిస్మస్ మెర్రి క్రిస్మస్\nవి విష్ యు హ్యాప్పీ క్రిస్మస్\n\nఆకాశమంతా ఆ దూతలంతా\nగొంతెత్తి స్తుతి పాడగా\nసర్వోన్నతమైన స్థలములలోన\nదేవునికే నిత్య మహిమ (2)\nభయముతో భ్రమలతో ఉన్న గొర్రెల కాపరులన్\nముదముతో కలిసిరి జనన వార్త చాటిరి     ||మనమంతా||\n\nఆ తూర్పు జ్ఞానులు ఆ గొర్రెల కాపరులు\nయేసయ్యను దర్శించిరి\nఎంతో విలువైన కానుకలను అర్పించి\nరారాజును పూజించిరి (2)\nహేరోదుకు పుర జనులకు శుభవార్త చాటిరి\nఅవనిలో వీరును దూతలై నిలిచిరి        ||మనమంతా||",
+        "english": "Vinthaina Thaaraka Velisindi Gaganaana\nYesayya Janmasthalamu Choopinchu Kaaryaana (2)\nGnaanulake Thappaledu Aa Thaara Anusarana\nDaivame Pampenani Grahiyinchu Hrudayaana (2)\nManamanthaa Jagamanthaa\nThaaravale Kreesthunu Chaatudaam\nHappy Christmas Merry Christmas\nWe Wish You Happy Christmas\n\nAakaashamanthaa Aa Doothalanthaa\nGontheththi Sthuthi Paadagaa\nSarvonnathamaina Sthalamulalona\nDevunike Nithya Mahima (2)\nBhayamutho Bhramalatho Unna Gorrela Kaaparulan\nMudamutho Kalisiri Janana Vaartha Chaatiri        ||Manamanthaa||\n\nAa Thoorpu Gnaanulu Aa Gorrela Kaaparulu\nYesayyanu Darshinchiri\nEntho Viluvaina Kaanukalanu Arpinchi\nRaaraajunu Poojinchiri (2)\nHeroduku Pura Janulaku Shubhavaartha Chaatiri\nAvanilo Veerunu Doothalai Nilichiri       ||Manamanthaa||"
+    },
+    song3: {
+        "url": "https://christianlyricz.com/2015/11/06/kreesthu-puttenu/",
+        "telugu": "క్రీస్తు పుట్టెను పశుల పాకలో\nపాపమంతయు రూపు మాపను\nసర్వలోకమున్ విమోచింపను\nరారాజు పుడమిపై జన్మించెను\n\nసంతోషమే సమాధానమే\nఆనందమే పరమానందమే (2)\n\nఅరె గొల్లలొచ్చి జ్ఞానులొచ్చి\nయేసుని చూచి కానుకలిచ్చి\nపాటలుపాడి నాట్యములాడి పరవశించిరే\n\nపరలోక దూతాలి పాట పాడగా\nపామరుల హృదయాలు పరవశించగా (2)\nఅజ్ఞానము అదృష్యమాయెను\nఅంధకార బంధకములు తొలగిపోయెను (2)    || అరె గొల్లలొచ్చి ||\n\nకరుణగల రక్షకుడు ధర కేగెను\nపరమును వీడి కడు దీనుడాయెను (2)\nవరముల నొసగ పరమ తండ్రి తనయుని\nమనకొసగెను రక్షకుని ఈ శుభవేళ (2)      || అరె గొల్లలొచ్చి ||",
+        "english": "Kreesthu Puttenu Pashula Paakalo\nPaapamanthayu Roopu Maapanu\nSarvalokamun Vimochimpanu\nRaaraaju Pudamipai Janminchenu\n\nSanthoshame Samaadhaaname\nAanandame Paramaanandame (2)\n\nArey Gollalochchi Gnaanulochchi\nYesuni Choochi Kaanukalichchi\nPaatalu Paadi Naatyamulaadi Paravashinchire\n\nParaloka Doothaali Paata Paadagaa\nPaamarula Hrudayaalu Paravashinchagaa (2)\nAgnaanamu Adrushyamaayenu\nAndhakaara Bandhakamulu Tholagipoyenu (2)    || Arey Gollalochchi ||\n\nKarunagala Rakshakudu Dhara Kegenu\nParamunu Veedi Kadu Deenudaayenu (2)\nVaramula Nosaga Parama Thandri Thanayuni\nManakosagenu Rakshakuni Ee Shubhavela (2)    || Arey Gollalochchi ||"
+    },
+    song4: {
+        "url": "https://www.christlyricsbooktelugu.com/2023/10/redu-nedu-janiyinchinadu-telugu.html",
+        "telugu": "జన్మించినాడు శ్రీ యేసు రాజు బేత్లెహేమందున\nసర్వోనతుడు వెలసినాడు రక్షణిచ్చుటకు - 2\nతూరురు రురు......\nఅక్షయ మార్గము నడిపించే మానవుడై\nనిజమే నిజమే దీన వరుడై ఉదయించే\nరేడు నేడు జనియించినాడు\nఆనందం అద్భుతం\nరేడు నేడు జనియించినాడు\nసంతోషం సమాధానం\n\nలేఖనం నెరవేర్పుకై - ఏతెంచను ప్రభువు\nదూత తెలిపెను ప్రభు రాకను - బాసురంబగు క్రీస్తు\nరాజితంబగు తేజంబహుతో ఉద్భవించినాడు\nఅంబరమున ఆవీర్భవించే నీతి సూర్యుడై\nతూరురు...రురు...\n\nజన్మించినాడు శ్రీ యేసు రాజు బేత్లెహేమందున\nసర్వోనతుడు వెలసినాడు రక్షణిచ్చుటకు\nతూరురు రురు......\nఅక్షయ మార్గము నడిపించే మానవుడై\nనిజమే నిజమే దీన వరుడై ఉదయించే\nరేడు నేడు జనియించినాడు\nఆనందం అద్భుతం\nరేడు నేడు జనియించినాడు\nసంతోషం సమాధానం\n\n\nరాజువైన మెస్సయ్యను - పూజింపను రండి\nఅద్వితియుండగు కుమారుని - చూద్దము రండి\nమహిమ ఘనత ప్రభావముతో\nమహిలో వెలసెను నేడు\nభువిపై దిగి వచ్చెను మనకొరకు పాపహారుడై...\nతూరురు...రురు\n\nజన్మించినాడు శ్రీ యేసు రాజు బేత్లెహేమందున\nసర్వోనతుడు వెలసినాడు రక్షణిచ్చుటకు\nతూరురు రురు......\nఅక్షయ మార్గము నడిపించే మానవుడై\nనిజమే నిజమే దీన వరుడై ఉదయించే\nరేడు నేడు జనియించినాడు\nఆనందం అద్భుతం\nరేడు నేడు జనియించినాడు\nసంతోషం సమాధానం",
+        "english": ""
+    },
+    song5: {
+        "url": "https://christianlyricz.com/2016/10/31/thaara-velisindi/",
+        "telugu": "తార వెలిసింది ఆ నింగిలో ధరణి మురిసింది\nదూత వచ్చింది సువార్తను మాకు తెలిపింది (2)\nరాజులకు రాజు పుట్టాడని\nయూదుల రాజు ఉదయించాడని (2)         ||తార||\n\nమందను విడచి మమ్మును మరచి\nమేమంతా కలిసి వెళ్ళాములే\nఆ ఊరిలో ఆ పాకలో\nస్తుతి గానాలు పాడాములే (2)\nసంతోషమే ఇక సంబరమే\nలోక రక్షణ ఆనందమే\nస్తోత్రార్పణే మా రారాజుకే\nఇది క్రిస్మస్ ఆర్భాటమే         ||తార||\n\nబంగారమును సాంబ్రాణియు\nబోళంబును తెచ్చాములే\nఆ యింటిలో మా కంటితో\nనిను కనులారా గాంచాములే (2)\nమా ఇమ్మానుయేలువు నీవేనని\nనిను మనసారా కొలిచాములే\nమా యూదుల రాజువు నీవేనని\nనిను ఘనపరచి పొగిడాములే        ||తార||",
+        "english": "Thaara Velisindi Aa Ningilo Dharani Murisindi\nDootha Vachchindi Suvaarthanu Maaku Thelipindi (2)\nRaajulaku Raaju Puttaadani\nYoodula Raaju Udayinchaadani (2)         ||Thaara||\n\nMandanu Vidachi Mammunu Marachi\nMemanthaa Kalisi Vellaamule\nAa Oorilo Aa Paakalo\nSthuthi Gaanaalu Paadaamule (2)\nSanthoshame Ika Sambarame\nLoka Rakshana Aanandame\nSthothraarpane Maa Raaraajuke\nIdi Christmas Aarbhaatame           ||Thaara||\n\nBangaaramunu Saambraaniyu\nBolambunu Thechchaamule\nAa Yintilo Maa Kantitho\nNinu Kanulaaraa Gaanchaamule (2)\nMaa Immaanuyeluvu Neevenani\nNinu Manasaaraa Kolichaamule\nMaa Yoodula Raajuvu Neevenani\nNinu Ghanaparachi Pogidaamule         ||Thaara||"
+    },
+    song6: {
+        "url": "https://christianlyricz.com/2015/11/09/sudhaa-madhura-kiranaala/",
+        "telugu": "సుధా మధుర కిరణాల అరుణోదయం\nకరుణామయుని శరణం అరుణోదయం (2)\nతెర మరుగు హృదయాలు వెలుగైనవి\nమరణాల చెరసాల మరుగైనది (2)            ||సుధా||\n\nదివి రాజుగా భువికి దిగినాడని – రవి రాజుగా ఇలను మిగిలాడని (2)\nనవలోక గగనాలు పిలిచాడని – పరలోక భవనాలు తెరిచాడని (2)\nఆరని జీవన జ్యోతిగ వెలిగే తారొకటొచ్చింది\nపాడే పాటల పశువులశాలను ఊయల చేసింది (2)\nనిను పావగా – నిరుపేదగా – జన్మించగా – ఇల పండుగ (2)           ||సుధా||\n\nలోకాలలో పాప శోకాలలో – ఏకాకిలా బ్రతుకు అవివేకులు (2)\nక్షమ హృదయ సహనాలు సమపాలుగా – ప్రేమానురాగాలు స్థిర ఆస్తిగా (2)\nనమ్మిన వారిని రమ్మని పిలిచే రక్షకుడా యేసే\nనిత్య సుఖాల జీవజలాల పెన్నిధి ఆ ప్రభువే (2)\nఆ జన్మమే – ఒక మర్మము – ఆ బంధమే – అనుబంధము (2)          ||సుధా||",
+        "english": "Sudhaa Madhura Kiranaala Arunodayam\nKarunaamayuni Sharanam Arunodayam (2)\nThera Marugu Hrudayaalu Velugainavi\nMaranaala Cherasaala Marugainadi (2)          ||Sudhaa||\n\nDivi Raajugaa Bhuviki Diginaadani – Ravi Rajugaa Ilanu Migilaadani (2)\nNavaloka Gaganaalu Pilichaadani – Paraloka Bhavanaalu Therichaadani (2)\nAarani Jeevana Jyothiga Velige Thaarokatochchindi\nPaade Paatala Pashuvulashaalanu Ooyala Chesindi (2)\nNinu Paavaga – Nirupedagaa – Janminchagaa – Ila Panduga (2)         ||Sudha||\n\nLokaalalo Paapa Shokaalalo – Ekaakilaa Brathuku Avivekulu (2)\nKshama Hrudaya Sahanaalu Samapaalugaa – Premaanu Raagalu Sthira Aasthigaa (2)\nNammina Vaarini Rammani Piliche Rakshakudaa Yese\nNithya Sukhaala Jeevajalaala Pennidhi Aa Prabhuve (2)\nAa Janmame – Oka Marmamu – Aa Bandhame – Anubandhamu (2)           ||Sudha||"
+    },
+    song7: {
+        "url": "https://christianlyricz.com/2018/10/30/chali-raathiri-eduru-choose/",
+        "telugu": "చలి రాతిరి ఎదురు చూసే\nతూరుపేమో చుక్క చూపే\nగొల్లలేమో పరుగునొచ్చె\nదూతలేమో పొగడ వచ్చె\nపుట్టాడు పుట్టాడురో రారాజు\nమెస్సయ్యా పుట్టాడురో మన కోసం (2)\n\nపశుల పాకలో పరమాత్ముడు\nసల్లని సూపులోడు సక్కనోడు\nఆకాశమంత మనసున్నోడు\nనీవెట్టివాడవైనా నెట్టివేయడు (2)\nసంబరాలు సంబరాలురో\nమన బ్రతుకుల్లో సంబరాలురో (2)            ||చలి||\n\nచింతలెన్ని ఉన్నా చెంత చేరి\nచేరదీయు వాడు ప్రేమగల్లవాడు\nఎవరు మరచినా నిన్ను మరవనన్న\nమన దేవుడు గొప్ప గొప్పవాడు (2)\nసంబరాలు సంబరాలురో\nమన బ్రతుకుల్లో సంబరాలురో (2)            ||చలి||",
+        "english": "Chali Raathiri Eduru Choose\nThoorupemo Chukka Choope\nGollalemo Parugunochche\nDoothalemo Pogada Vachche\nPuttaadu Puttaaduro Raaraaju\nMessayyaa Puttaaduro Mana Kosam (2)\n\nPashula Paakalo Paramaathmudu\nSallani Soopulodu Sakkanodu\nAakaashamantha Manasunnodu\nNeevettivaadavainaa Nettiveyadu (2)\nSambaraalu Sambaraaluro\nMana Brathukullo Sambaraaluro (2)            ||Chali||\n\nChinthalenni Unnaa Chentha Cheri\nCheradeeyu Vaadu Premagalla Vaadu\nEvaru Marachinaa Ninnu Maravananna\nMana Devudu Goppa Goppavaadu (2)\nSambaraalu Sambaraaluro\nMana Brathukullo Sambaraaluro (2)            ||Chali||"
+    },
+    song8: {
+        "url": "https://christianlyricz.com/2014/11/08/dootha-paata-paadudi/",
+        "telugu": "దూత పాట పాడుడి – రక్షకున్ స్తుతించుడి\nఆ ప్రభుండు పుట్టెను – బెత్లెహేము నందున\nభూజనంబు కెల్లను – సౌఖ్య సంభ్రమాయెను\nఆకసంబు నందున – మ్రోగు పాట చాటుడి\nదూత పాట పాడుడి – రక్షకున్ స్తుతించుడి\n\nఊర్ధ్వ లోకమందున  – గొల్వగాను శుద్దులు\nఅంత్య కాలమందున – కన్య గర్భమందున\nబుట్టినట్టి రక్షకా – ఓ ఇమ్మానుయేల్ ప్రభో\nఓ నరావతారుడా – నిన్ను నెన్న శక్యమా\nదూత పాట పాడుడి – రక్షకున్ స్తుతించుడి\n\nరావే నీతి సూర్యుడా – రావే దేవా పుత్రుడా\nనీదు రాక వల్లను – లోక సౌఖ్య మాయెను\nభూ నివాసులందరూ – మృత్యు భీతి గెల్తురు\nనిన్ను నమ్ము వారికి – ఆత్మ శుద్ది కల్గును\nదూత పాట పాడుడి – రక్షకున్ స్తుతించుడి",
+        "english": "Dootha Paata Paadudi – Rakshakun Sthuthinchudi\nAa Prabhundu Puttenu – Bethlahemu Nanduna\nBhoojanambu Kellanu – Soukhya Sambhramaayenu\nAakasambu Nanduna – Mrogu Paata Chaatudi\nDootha Paata Paadudi – Rakshakun Sthuthinchudi\n\nOordhva Lokamanduna – Golvagaanu Shudhdhulu\nAnthya Kaalamanduna – Kanya Garbhamanduna\nButtinatti Rakshakaa – O Immaanuyel Prabho\nO Naraavathaarudaa – Ninnu Nenna Shakyamaa\nDootha Paata Paadudi – Rakshakun Sthuthinchudi\n\nRaave Neethi Sooryudaa – Raave Deva Puthrudaa\nNeedu Raaka Vallanu – Loka Soukhya Maayenu\nBhoo Nivaasulandaru – Mruthyu Bheethi Gelthuru\nNinnu Nammu Vaariki – Aathma Shudhdhi Kalgunu\nDootha Paata Paadudi – Rakshakun Sthuthinchudi"
+    },
+    song9: {
+        "url": "https://christianlyricz.com/2014/11/08/thoorpu-diku-chukka-butte/",
+        "telugu": "తూర్పు దిక్కు చుక్క బుట్టె\nమేరమ్మా – ఓ మరియమ్మా (2)\nచుక్కను జూచి మేము వచ్చినాము\nమొక్కి పోవుటకు (2)             ||తూర్పు దిక్కు||\n\nబెత్లెహేము పురము లోని బాలుడమ్మా\nగొప్ప బాలుడమ్మా (2)\nమన పాపముల బాప పుట్టెనమ్మా\nమహిమవంతుడమ్మా (2)        ||తూర్పు దిక్కు||\n\nపశువుల పాకలోని బాలుడమ్మా\nపాపరహితుడమ్మా (2)\nపాపంబు బాపను పుట్టెనమ్మా\nసత్యవంతుడమ్మా (2)             ||తూర్పు దిక్కు||\n\nబంగారం సాంబ్రాణి బోళం తెచ్చినాము\nబాల యేసు నొద్దకు (2)\nబంగారు పాదముల మ్రొక్కెదము\nబహుగ పాడెదము (2)            ||తూర్పు దిక్కు||",
+        "english": "Thoorpu Diku Chukka Butte\nMerammaa – O Mariyamma (2)\nChukkanu Joochi Memu Vachchinaamu\nMokki Povutaku (2)                 ||Thoorpu Diku||\n\nBethlehemu Puramu Loni\nBaaludamma – Goppa Baaludamma (2)\nMana Paapamula Baapa Puttenamma\nMahimavanthudamma (2)       ||Thoorpu Diku||\n\nPashuvula Paakaloni\nBaaludamma – Paaparahithudamma (2)\nPaapambu Baapanu Puttenamma\nSathyavanthudamma (2)         ||Thoorpu Diku||\n\nBangaaram Saambraani Bolam\nThechchinaamu – Baala Yesu Noddaku (2)\nBangaaru Paadamula Mrokkedamu\nBahuga Paadedamu (2)          ||Thoorpu Diku||"
+    },
+    song10: {
+        "url": "https://christianlyricz.com/2018/02/17/bethlehemulo-sandadi/",
+        "telugu": "బెత్లెహేములో సందడి\nపశుల పాకలో సందడి\nశ్రీ యేసు పుట్టాడని\nమహారాజు పుట్టాడని (2)       ||బెత్లెహేములో||\n\nఆకాశములో సందడి\nచుక్కలలో సందడి (2)\nవెలుగులతో సందడి\nమిల మిల మెరిసే సందడి (2)       ||బెత్లెహేములో||\n\nదూతల పాటలతో సందడి\nసమాధాన వార్తతో సందడి (2)\nగొల్లల పరుగులతో సందడి\nక్రిస్మస్ పాటలతో సందడి (2)       ||బెత్లెహేములో||\n\nదావీదు పురములో సందడి\nరక్షకుని వార్తతో సందడి (2)\nజ్ఞానుల రాకతో సందడి\nలోకమంతా సందడి (2)       ||బెత్లెహేములో||",
+        "english": "Bethlehemulo Sandadi\nPashula Paakalo Sandadi\nSri Yesu Puttadani\nMaharaju Puttadani (2)       ||Bethlehemulo||\n\nAakaashamulo Sandadi\nChukkalalo Sandadi (2)\nVelugulato Sandadi\nMil Mil Merise Sandadi (2)       ||Bethlehemulo||\n\nDoothala Paatalato Sandadi\nSamaadhaana Vaarthato Sandadi (2)\nGollala Parugulato Sandadi\nKrismas Paatalato Sandadi (2)       ||Bethlehemulo||\n\nDavide Puramulo Sandadi\nRakshakuni Vaarthato Sandadi (2)\nJnaanulu Raakato Sandadi\nLokamanta Saandadi (2)       ||Bethlehemulo||"
+    },
+    song11: {
+        "url": "https://christianlyricz.com/2016/12/07/bethlahemulonantaa-sandadi/",
+        "telugu": "బెత్లహేములోనంటా – సందడి\nపశువుల పాకలో – సందడి\nదూతలు వచ్చెనంటా – సందడి\nపాటలు పాడేనంటా – సందడి (2)\nరారాజు పుట్టెనని – సందడి\nమా రాజు పుట్టెనని – సందడి (2)\nచేసారంట సందడే సందడి\nచేయబోదాము సందడే సందడి (2)\nహ్యాప్పీ హ్యాప్పీ..\nహ్యాప్పీ హ్యాప్పీ క్రిస్మస్ క్రిస్మస్\nవిష్ యు ఎ హ్యాప్పీ క్రిస్మస్\nమెర్రీ మెర్రీ క్రిస్మస్ క్రిస్మస్\nవిష్ యు ఎ మెర్రీ క్రిస్మస్\n\nఅర్ధ రాత్రి వేళలో – సందడి\nదూతలు వచ్చెనంటా – సందడి\nరక్షకుడు పుట్టెనని – సందడి\nవార్తను తెలిపేనటా – సందడి (2)\nచేసారంట సందడే సందడి\nచెయ్యబోదాము సందడే సందడి\nచేసారంట సందడే సందడి\nచేయబోదాము సందడే సందడే సందడే సందడే సందడే\nహ్యాప్పీ హ్యాప్పీ..\nహ్యాప్పీ హ్యాప్పీ క్రిస్మస్ క్రిస్మస్\nవిష్ యు ఎ హ్యాప్పీ క్రిస్మస్\nమెర్రీ మెర్రీ క్రిస్మస్ క్రిస్మస్\nవిష్ యు ఎ మెర్రీ క్రిస్మస్\n\nగొల్లలు వచ్చిరంటా – సందడి\nమనసారా మ్రొక్కిరంటా – సందడి\nఅందాల బాలుడంటా – సందడి\nఅందరి దేవుడని – సందడి (2)\nరారాజు పుట్టెనని – సందడి\nమా రాజు పుట్టెనని – సందడి (2)\nచేసారంట సందడే సందడి\nచేయబోదాము సందడే సందడి (2)\nహ్యాప్పీ హ్యాప్పీ..\nహ్యాప్పీ హ్యాప్పీ క్రిస్మస్ క్రిస్మస్\nవిష్ యు ఎ హ్యాప్పీ క్రిస్మస్\nమెర్రీ మెర్రీ క్రిస్మస్ క్రిస్మస్\nవిష్ యు ఎ మెర్రీ క్రిస్మస్\n\nతారను చూచుకుంటూ – సందడి\nజ్ఞానులు వచ్చారంటా – సందడి\nపెట్టెలు తెచ్చారంటా – సందడి\nకానుకలిచ్చారంటా – సందడి (2)\nరారాజు పుట్టెనని – సందడి\nమా రాజు పుట్టెనని – సందడి (2)\nచేసారంట సందడే సందడి\nచేయబోదాము సందడే సందడి (2)\nహ్యాప్పీ హ్యాప్పీ..\nహ్యాప్పీ హ్యాప్పీ క్రిస్మస్ క్రిస్మస్\nవిష్ యు ఎ హ్యాప్పీ క్రిస్మస్\nమెర్రీ మెర్రీ క్రిస్మస్ క్రిస్మస్\nవిష్ యు ఎ మెర్రీ క్రిస్మస్ (2)",
+        "english": "Bethlahemulnonta – Sandadi\nPashuvula Paakalo – Sandadi\nDoothalu Vachchenanta – Sandadi\nPaatalu Paadenanta – Sandadi (2)\nRaaraaju Puttenani – Sandadi\nMaa Raaju Puttenani – Sandadi (2)\nChesaaranta Sandade Sandadi\nCheyabodaamu Sandade Sandadi (2)\nHappy Happy..\nHappy Happy Christmas Christmas\nWish you a Happy Christmas\nMerry Merry Christmas Christmas\nWish you a Merry Christmas\nArdha Raathri Velalo – Sandadi\nDoothalu Vachchenantaa – Sandadi\nRakshakudu Puttenani – Sandadi\nVaarthanu Thelipenataa – Sandadi (2)\nChesaaranta Sandade Sandadi\nCheyyabodaamu Sandade Sandadi\nChesaaranta Sandade Sandadi\nCheyabodaamu Sandade Sandade Sandade Sandade Sandade\nHappy Happy..\nHappy Happy Christmas Christmas\nWish you a Happy Christmas\nMerry Merry Christmas Christmas\nWish you a Merry Christmas\n\nGollalu Vachchirantaa – Sandadi\nManasaaraa Mrokkirantaa – Sandadi\nAndaala Baaludantaa – Sandadi\nAndari Devudani – Sandadi (2)\nRaaraaju Puttenani – Sandadi\nMaa Raaju Puttenani – Sandadi (2)\nChesaaranta Sandade Sandadi\nCheyabodaamu Sandade Sandadi (2)\nHappy Happy..\nHappy Happy Christmas Christmas\nWish you a Happy Christmas\nMerry Merry Christmas Christmas\nWish you a Merry Christmas\n\nThaaranu Choochukuntu – Sandadi\nGnaanulu Vachchaarantaa – Sandadi\nPettelu Thechchaarantaa – Sandadi\nKaanukalichchaarantaa – Sandadi (2)\nRaaraaju Puttenani – Sandadi\nMaa Raaju Puttenani – Sandadi (2)\nChesaaranta Sandade Sandadi\nCheyabodaamu Sandade Sandadi (2)\nHappy Happy..\nHappy Happy Christmas Christmas\nWish you a Happy Christmas\nMerry Merry Christmas Christmas\nWish you a Merry Christmas (2)"
+    },
+    song12: {
+        "url": "https://christianlyricz.com/2015/11/06/joy-to-the-world/",
+        "telugu": "Joy to the World, the Lord is come!\nLet earth receive her King;\nLet every heart prepare Him room,\nAnd Heaven and nature sing,\nAnd Heaven and nature sing,\nAnd Heaven, and Heaven, and nature sing\n\nJoy to the earth, the Savior reigns!\nLet men their songs employ;\nWhile fields and floods, rocks, hills and plains\nRepeat the sounding joy,\nRepeat the sounding joy,\nRepeat, repeat, the sounding joy.\n\nNo more let sins and sorrows grow\nNor thorns infest the ground\nHe comes to make His blessings flow\nFar as the curse is found\nFar as the curse is found\nFar as, far as the curse is found\n\nHe rules the world with truth and grace,\nAnd makes the nations prove\nThe glories of His righteousness,\nAnd wonders of His love,\nAnd wonders of His love,\nAnd wonders, wonders, of His love.",
+        "english": "Joy to the World, the Lord is come!\nLet earth receive her King;\nLet every heart prepare Him room,\nAnd Heaven and nature sing,\nAnd Heaven and nature sing,\nAnd Heaven, and Heaven, and nature sing\n\nJoy to the earth, the Savior reigns!\nLet men their songs employ;\nWhile fields and floods, rocks, hills and plains\nRepeat the sounding joy,\nRepeat the sounding joy,\nRepeat, repeat, the sounding joy.\n\nNo more let sins and sorrows grow\nNor thorns infest the ground\nHe comes to make His blessings flow\nFar as the curse is found\nFar as the curse is found\nFar as, far as the curse is found\n\nHe rules the world with truth and grace,\nAnd makes the nations prove\nThe glories of His righteousness,\nAnd wonders of His love,\nAnd wonders of His love,\nAnd wonders, wonders, of His love."
+    },
+    song13: {
+        "url": "https://christianlyricz.com/2015/10/12/here-i-am-to-worship/",
+        "telugu": "Light of the world,\nYou stepped down into darkness\nOpened my eyes, let me see\nBeauty that made,\nfor This heart adore you\nHope of a life spent with you\n\nHere I am to worship,\nHere I am to bow down\nHere I am to say that you’re my God\nYou’re altogether lovely,\nAltogether worthy\nAltogether wonderful to me\n\nKing of all days Oh so highly exalted\nGlorious in Heaven above\nHumbly you came\nTo the earth you created\nAll for love’s sake became poor\n\nHere I am to worship,\nHere I am to bow down\nHere I am to say that you’re my God\nYou’re altogether lovely,\nAltogether worthy\nAltogether wonderful to me\n\nAnd I’ll never know How much it cost\nTo see my sin up on that cross (2)\n\n\nHere I am to worship,\nHere I am to bow down\nHere I am to say that you’re my God\nYou’re altogether lovely,\nAltogether worthy\nAltogether wonderful to me",
+        "english": "Light of the world,\nYou stepped down into darkness\nOpened my eyes, let me see\nBeauty that made,\nfor This heart adore you\nHope of a life spent with you\n\nHere I am to worship,\nHere I am to bow down\nHere I am to say that you’re my God\nYou’re altogether lovely,\nAltogether worthy\nAltogether wonderful to me\n\nKing of all days Oh so highly exalted\nGlorious in Heaven above\nHumbly you came\nTo the earth you created\nAll for love’s sake became poor\n\nHere I am to worship,\nHere I am to bow down\nHere I am to say that you’re my God\nYou’re altogether lovely,\nAltogether worthy\nAltogether wonderful to me\n\nAnd I’ll never know How much it cost\nTo see my sin up on that cross (2)\n\n\nHere I am to worship,\nHere I am to bow down\nHere I am to say that you’re my God\nYou’re altogether lovely,\nAltogether worthy\nAltogether wonderful to me"
+    },
+    song14: {
+        "url": "https://christianlyricz.com/2020/07/07/angels-we-have-heard/",
+        "telugu": "Angels we have heard on high\nSweetly singing o’er the plains,\nAnd the mountains in reply\nEchoing their joyous strains.\n\nGloria in excelsis Deo\nGloria in excelsis Deo\n\nShepherds, why this jubilee?\nWhy your joyous strains prolong?\nWhat the gladsome tidings be\nWhich inspire your heav’nly song?\n\nGloria in excelsis Deo\nGloria in excelsis Deo\n\nCome to Bethlehem and see\nHim whose birth the angels sing;\nCome, adore on bended knee\nChrist the Lord, the newborn King.\n\nGloria in excelsis Deo\nGloria in excelsis Deo",
+        "english": "Angels we have heard on high\nSweetly singing o’er the plains,\nAnd the mountains in reply\nEchoing their joyous strains.\n\nGloria in excelsis Deo\nGloria in excelsis Deo\n\nShepherds, why this jubilee?\nWhy your joyous strains prolong?\nWhat the gladsome tidings be\nWhich inspire your heav’nly song?\n\nGloria in excelsis Deo\nGloria in excelsis Deo\n\nCome to Bethlehem and see\nHim whose birth the angels sing;\nCome, adore on bended knee\nChrist the Lord, the newborn King.\n\nGloria in excelsis Deo\nGloria in excelsis Deo"
+    },
+    song15: {
+        "url": "https://christianlyricz.com/2015/10/12/blessed-assurance/",
+        "telugu": "Blessed assurance, Jesus is mine!\nOh, what a foretaste of glory divine!\nHeir of salvation, purchase of God,\nBorn of His Spirit, washed in His blood.\n\nThis is my story, this is my song,\nPraising my Savior all the day long;\nThis is my story, this is my song,\nPraising my Savior all the day long.\n\nPerfect submission, perfect delight,\nVisions of rapture now burst on my sight;\nAngels descending bring from above,\nEchoes of mercy, whispers of love.\n\nThis is my story, this is my song,\nPraising my Savior all the day long;\nThis is my story, this is my song,\nPraising my Savior all the day long.\n\nPerfect submission, all is at rest,\nI in my Savior am happy and blest;\nWatching and waiting, looking above,\nFilled with His goodness lost in His love.\n\nThis is my story, this is my song,\nPraising my Savior all the day long;\nThis is my story, this is my song,\nPraising my Savior all the day long.",
+        "english": "Blessed assurance, Jesus is mine!\nOh, what a foretaste of glory divine!\nHeir of salvation, purchase of God,\nBorn of His Spirit, washed in His blood.\n\nThis is my story, this is my song,\nPraising my Savior all the day long;\nThis is my story, this is my song,\nPraising my Savior all the day long.\n\nPerfect submission, perfect delight,\nVisions of rapture now burst on my sight;\nAngels descending bring from above,\nEchoes of mercy, whispers of love.\n\nThis is my story, this is my song,\nPraising my Savior all the day long;\nThis is my story, this is my song,\nPraising my Savior all the day long.\n\nPerfect submission, all is at rest,\nI in my Savior am happy and blest;\nWatching and waiting, looking above,\nFilled with His goodness lost in His love.\n\nThis is my story, this is my song,\nPraising my Savior all the day long;\nThis is my story, this is my song,\nPraising my Savior all the day long."
+    },
+    song16: {
+        "url": "https://wordsforlife.org.uk/activities/we-wish-you-a-merry-christmas/",
+        "telugu": "We wish you a Merry Christmas,\nWe wish you a Merry Christmas,\nWe wish you a Merry Christmas, and a Happy New Year!\nGood tidings we bring to you and your kin,\nWe wish you a Merry Christmas and a Happy New Year!\n\nSo bring us some figgy pudding,\nSo bring us some figgy pudding,\nSo bring us some figgy pudding, and a cup of good cheer!\nGood tidings we bring to you and your kin,\nWe wish you a Merry Christmas and a Happy New Year!\n\nWe won't go until we've got some,\nWe won't go until we've got some,\nWe won't go until we've got some, so bring some out here!\nGood tidings we bring to you and your kin,\nWe wish you a Merry Christmas and a Happy New Year!\nWe wish you a Merry Christmas and a Happy New Year!",
+        "english": "We wish you a Merry Christmas,\nWe wish you a Merry Christmas,\nWe wish you a Merry Christmas, and a Happy New Year!\nGood tidings we bring to you and your kin,\nWe wish you a Merry Christmas and a Happy New Year!\n\nSo bring us some figgy pudding,\nSo bring us some figgy pudding,\nSo bring us some figgy pudding, and a cup of good cheer!\nGood tidings we bring to you and your kin,\nWe wish you a Merry Christmas and a Happy New Year!\n\nWe won't go until we've got some,\nWe won't go until we've got some,\nWe won't go until we've got some, so bring some out here!\nGood tidings we bring to you and your kin,\nWe wish you a Merry Christmas and a Happy New Year!\nWe wish you a Merry Christmas and a Happy New Year!"
+    }
+};
+
+document.getElementById("song-list").firstElementChild.innerHTML = songsList.map((song, index) => 
+    `<li onclick="showLyrics('song${index + 1}')">${song}</li>`
+).join('');
+
+function showLyrics(song) {
+    currentSong = song;
+    document.getElementById("lyrics-title").textContent =
+        event.target.textContent;
+
+    updateLyrics();
+
+    document.getElementById("song-list").classList.remove("show");
+}
+
+function updateLyrics() {
+    if (!currentSong) return;
+
+    document.getElementById("lyrics-body").textContent =
+        lyricsData[currentSong][currentLang];
+}
+
+// Language toggle
+document.getElementById("lang-toggle").addEventListener("change", (e) => {
+    currentLang = e.target.checked ? "english" : "telugu";
+    updateLyrics();
+});
+
+// Mobile menu toggle
+document.getElementById("menu-toggle").onclick = () => {
+    document.getElementById("song-list").classList.toggle("show");
+};
+
+// function showLyrics(song) {
+//     document.getElementById("lyrics-title").textContent =
+//         `${song.replace('song', '')} ${event.target.textContent}`;
+
+//     document.getElementById("lyrics-body").textContent =
+//         lyricsData[song].telugu;
+
+//     document.getElementById("song-list").classList.remove("show");
+// }
+
+// document.getElementById("menu-toggle").onclick = () => {
+//     document.getElementById("song-list").classList.toggle("show");
+// }; -->
+
+//<a href="https://waytochurch.com/lyrics/song/22735/nazarethu-patnaana-nagumalle-dharani" target="_blank" style="color: var(--gold); text-decoration: underline;">Original Lyrics</a>
+</script>
+
+</body>
+</html>
